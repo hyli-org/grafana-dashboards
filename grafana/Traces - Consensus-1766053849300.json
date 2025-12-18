@@ -631,11 +631,15 @@
           },
           "label": "Slot end",
           "name": "maxSlot",
-          "options": [],
-          "query": "",
-          "refresh": 1,
-          "regex": "",
-          "type": "query"
+          "options": [
+            {
+              "selected": true,
+              "text": "0",
+              "value": "0"
+            }
+          ],
+          "query": "0",
+          "type": "custom"
         }
       ]
     },
