@@ -27,6 +27,9 @@
     "links": [],
     "panels": [
       {
+        "datasource": {
+          "type": "prometheus"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -73,9 +76,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "consensus_current_slot{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -83,6 +88,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -129,9 +138,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "node_state_current_height{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -139,6 +150,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -193,9 +208,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "node_state_unsettled_transactions{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -203,6 +220,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -257,9 +278,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "p2p_server_peers{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -583,6 +606,10 @@
         "type": "piechart"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -638,9 +665,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "rate(node_state_settled_transactions_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -648,6 +677,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -703,9 +736,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "rate(node_state_processed_blocks_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -1745,6 +1780,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "decimals": 2,
@@ -1802,9 +1841,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "rate(node_state_processed_blocks_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -1812,6 +1853,10 @@
         "type": "gauge"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "custom": {
@@ -2070,6 +2115,10 @@
         "type": "table"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -2167,9 +2216,11 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "consensus_current_slot{app=~\"$node\"} * 0",
             "intervalFactor": 1,
-            "legendFormat": "{{app}}",
+            "legendFormat": "{{pod}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -2553,9 +2604,7 @@
         },
         {
           "current": {
-            "text": [
-              "All"
-            ],
+            "text": "All",
             "value": [
               "$__all"
             ]
@@ -2572,9 +2621,7 @@
         },
         {
           "current": {
-            "text": [
-              "All"
-            ],
+            "text": "All",
             "value": [
               "$__all"
             ]
@@ -2592,7 +2639,7 @@
       ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {},
