@@ -1,68 +1,10 @@
 {
-  "apiVersion": "dashboard.grafana.app/v0alpha1",
+  "apiVersion": "dashboard.grafana.app/v1beta1",
   "kind": "Dashboard",
   "metadata": {
     "name": "node-overview"
   },
   "spec": {
-    "__elements": {},
-    "__inputs": [],
-    "__requires": [
-      {
-        "id": "gauge",
-        "name": "Gauge",
-        "type": "panel",
-        "version": ""
-      },
-      {
-        "id": "grafana",
-        "name": "Grafana",
-        "type": "grafana",
-        "version": "12.3.0"
-      },
-      {
-        "id": "heatmap",
-        "name": "Heatmap",
-        "type": "panel",
-        "version": ""
-      },
-      {
-        "id": "piechart",
-        "name": "Pie chart",
-        "type": "panel",
-        "version": ""
-      },
-      {
-        "id": "stat",
-        "name": "Stat",
-        "type": "panel",
-        "version": ""
-      },
-      {
-        "id": "state-timeline",
-        "name": "State timeline",
-        "type": "panel",
-        "version": ""
-      },
-      {
-        "id": "status-history",
-        "name": "Status history",
-        "type": "panel",
-        "version": ""
-      },
-      {
-        "id": "table",
-        "name": "Table",
-        "type": "panel",
-        "version": ""
-      },
-      {
-        "id": "timeseries",
-        "name": "Time series",
-        "type": "panel",
-        "version": ""
-      }
-    ],
     "annotations": {
       "list": [
         {
@@ -1174,17 +1116,62 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
             "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
               "hideFrom": {
                 "legend": false,
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
               "scaleDistribution": {
                 "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
               }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
             }
           },
           "overrides": []
@@ -1197,52 +1184,32 @@
         },
         "id": 20,
         "options": {
-          "calculate": false,
-          "cellGap": 2,
-          "color": {
-            "exponent": 0.5,
-            "fill": "dark-orange",
-            "mode": "scheme",
-            "reverse": false,
-            "scale": "exponential",
-            "scheme": "Spectral",
-            "steps": 128
-          },
-          "exemplars": {
-            "color": "rgba(255,0,255,0.7)"
-          },
-          "filterValues": {
-            "le": 1e-9
-          },
           "legend": {
-            "show": true
-          },
-          "rowsFrame": {
-            "layout": "auto"
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
           },
           "tooltip": {
+            "hideZeros": false,
             "mode": "single",
-            "showColorScale": false,
-            "yHistogram": false
-          },
-          "yAxis": {
-            "axisPlacement": "left",
-            "reverse": false,
-            "unit": "s"
+            "sort": "none"
           }
         },
         "pluginVersion": "12.3.0",
         "targets": [
           {
-            "expr": "sum(rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])) by (le)",
-            "format": "heatmap",
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.5, sum by(le, otel_scope_name, branch, pod) (rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])))",
+            "format": "time_series",
             "intervalFactor": 1,
-            "legendFormat": "{{le}}",
+            "legendFormat": "{{otel_scope_name}}/{{branch}} ({{pod}})",
+            "range": true,
             "refId": "A"
           }
         ],
         "title": "Event Loop Latency Distribution",
-        "type": "heatmap"
+        "type": "timeseries"
       },
       {
         "fieldConfig": {
@@ -2571,7 +2538,10 @@
     "templating": {
       "list": [
         {
-          "current": {},
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
           "includeAll": true,
           "label": "Node",
           "name": "node",
@@ -2582,7 +2552,14 @@
           "type": "query"
         },
         {
-          "current": {},
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
           "includeAll": true,
           "label": "Validator",
           "multi": true,
@@ -2594,7 +2571,14 @@
           "type": "query"
         },
         {
-          "current": {},
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
           "includeAll": true,
           "label": "TCP Server",
           "multi": true,
@@ -2613,7 +2597,6 @@
     },
     "timepicker": {},
     "timezone": "browser",
-    "title": "Node Overview",
-    "weekStart": ""
+    "title": "Node Overview"
   }
 }
