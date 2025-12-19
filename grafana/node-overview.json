@@ -1207,7 +1207,8 @@
                   "value": 80
                 }
               ]
-            }
+            },
+            "unit": "ms"
           },
           "overrides": []
         },
@@ -1318,6 +1319,9 @@
         "type": "heatmap"
       },
       {
+        "datasource": {
+          "type": "prometheus"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1371,7 +1375,7 @@
                 }
               ]
             },
-            "unit": "s"
+            "unit": "ms"
           },
           "overrides": []
         },
@@ -1398,13 +1402,15 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
-            "expr": "histogram_quantile(0.95, sum by (le, branch) (rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])))",
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.95, sum by (le, otel_scope_name, branch, pod) (rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])))",
             "intervalFactor": 1,
             "legendFormat": "p95 {{branch}}",
+            "range": true,
             "refId": "A"
           }
         ],
-        "title": "Event Loop Latency p95 by Branch",
+        "title": "Event Loop p95 latencies",
         "type": "timeseries"
       },
       {
