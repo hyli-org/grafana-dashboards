@@ -1208,7 +1208,7 @@
             "refId": "A"
           }
         ],
-        "title": "Event Loop Latency Distribution",
+        "title": "Event Loop Median latencies",
         "type": "timeseries"
       },
       {
