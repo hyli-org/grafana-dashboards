@@ -1,0 +1,561 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2beta1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "edodkfmj0tce8f",
+    "namespace": "default",
+    "uid": "8003d6a3-d5ca-44cf-b2ee-4a4b5036ebb8",
+    "resourceVersion": "1766148518510985",
+    "generation": 1,
+    "creationTimestamp": "2025-12-19T12:48:38Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "2399871572729856"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:df7hngxfmpmgwe"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "builtIn": true,
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "query": {
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "group": "grafana",
+            "kind": "DataQuery",
+            "spec": {},
+            "version": "v0"
+          }
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "tempo"
+                      },
+                      "group": "tempo",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "limit": 20,
+                        "metricsQueryType": "range",
+                        "query": "${traceId}",
+                        "queryType": "traceql",
+                        "scenarioId": "trace",
+                        "serviceMapUseNativeHistograms": false,
+                        "tableType": "traces"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 1,
+          "links": [],
+          "title": "Traces panel",
+          "vizConfig": {
+            "group": "traces",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "spanFilters": {
+                  "criticalPathOnly": false,
+                  "matchesOnly": false,
+                  "serviceNameOperator": "=",
+                  "spanNameOperator": "=",
+                  "tags": [
+                    {
+                      "id": "0271031a-d7a",
+                      "operator": "="
+                    }
+                  ]
+                }
+              }
+            },
+            "version": "12.3.0"
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "tempo"
+                      },
+                      "group": "tempo",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "filters": [
+                          {
+                            "id": "e4879c25",
+                            "operator": "=",
+                            "scope": "span"
+                          },
+                          {
+                            "id": "service-name",
+                            "isCustomValue": false,
+                            "operator": "=",
+                            "scope": "resource",
+                            "tag": "service.name",
+                            "value": ["hyliquid-orderbook"],
+                            "valueType": "string"
+                          },
+                          {
+                            "id": "min-duration",
+                            "operator": ">",
+                            "tag": "duration",
+                            "value": "1ms",
+                            "valueType": "duration"
+                          }
+                        ],
+                        "limit": 20,
+                        "metricsQueryType": "range",
+                        "query": "{name=\"http-request\"} | select(span.name, span.http.status, span.http.duration)",
+                        "queryType": "traceql",
+                        "serviceMapUseNativeHistograms": false,
+                        "tableType": "spans"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "filterByRefId",
+                  "spec": {
+                    "id": "filterByRefId",
+                    "options": {
+                      "include": "/^(?:traces)$/"
+                    }
+                  }
+                },
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {
+                        "Name": true,
+                        "Service": true,
+                        "Span ID": true,
+                        "Trace ID": false,
+                        "Trace Name": true,
+                        "Trace Service": true,
+                        "http.duration": true,
+                        "nested": true,
+                        "traceIdHidden": false
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "Duration": 9,
+                        "Name": 7,
+                        "Span ID": 3,
+                        "Start time": 4,
+                        "Trace Name": 2,
+                        "Trace Service": 1,
+                        "http.duration": 8,
+                        "http.status": 6,
+                        "name": 5,
+                        "traceIdHidden": 0
+                      },
+                      "orderBy": [],
+                      "orderByMode": "manual",
+                      "renameByName": {
+                        "Duration": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 3,
+          "links": [],
+          "title": "Traces",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "tooltip": {
+                      "placement": "top"
+                    }
+                  },
+                  "links": [
+                    {
+                      "title": "Set trace",
+                      "url": "/d/edodkfmj0tce8f/traces-panel?orgId=1&var-traceId=${__data.fields[\"traceIdHidden\"]}"
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 10
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Duration"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "gauge",
+                          "valueDisplayMode": "color"
+                        }
+                      },
+                      {
+                        "id": "custom.width"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "frameIndex": 0,
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "Start time"
+                  }
+                ]
+              }
+            },
+            "version": "12.3.0"
+          }
+        }
+      },
+      "panel-5": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "tempo"
+                      },
+                      "group": "tempo",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "filters": [
+                          {
+                            "id": "19da16a1",
+                            "operator": "=",
+                            "scope": "span"
+                          }
+                        ],
+                        "limit": 20,
+                        "metricsQueryType": "range",
+                        "query": "{trace:id=\"$traceId\"} | select(span:name)",
+                        "queryType": "traceql",
+                        "serviceMapUseNativeHistograms": false,
+                        "spss": 30,
+                        "tableType": "spans"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "filterByRefId",
+                  "spec": {
+                    "id": "filterByRefId",
+                    "options": {
+                      "include": "/^(?:traces)$/"
+                    }
+                  }
+                },
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {
+                        "Trace Name": true,
+                        "Trace Service": true,
+                        "traceIdHidden": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {},
+                      "orderByMode": "auto",
+                      "renameByName": {
+                        "Name": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "kind": "sortBy",
+                  "spec": {
+                    "id": "sortBy",
+                    "options": {
+                      "fields": {},
+                      "sort": [
+                        {
+                          "desc": true,
+                          "field": "Duration"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 5,
+          "links": [],
+          "title": "Spans",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 100
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Duration"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "mode": "gradient",
+                          "type": "gauge",
+                          "valueDisplayMode": "text"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "12.2.1"
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": []
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": ["demo", "visualization"],
+    "timeSettings": {
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "fiscalYearStartMonth": 0,
+      "from": "now-6h",
+      "hideTimepicker": false,
+      "timezone": "browser",
+      "to": "now"
+    },
+    "title": "Traces - HTTP Requests",
+    "variables": [
+      {
+        "kind": "CustomVariable",
+        "spec": {
+          "allowCustomValue": true,
+          "current": {
+            "text": "7a06bbfb1b31f6e6bbd07b7cc9cafb",
+            "value": "7a06bbfb1b31f6e6bbd07b7cc9cafb"
+          },
+          "hide": "dontHide",
+          "includeAll": false,
+          "label": "Trace ID",
+          "multi": false,
+          "name": "traceId",
+          "options": [],
+          "query": "",
+          "skipUrlSync": false
+        }
+      },
+      {
+        "kind": "CustomVariable",
+        "spec": {
+          "allowCustomValue": true,
+          "current": {
+            "text": "0ms",
+            "value": "0ms"
+          },
+          "hide": "dontHide",
+          "includeAll": false,
+          "label": "Min duration",
+          "multi": false,
+          "name": "minDuration",
+          "options": [
+            {
+              "selected": true,
+              "text": "0ms",
+              "value": "0ms"
+            },
+            {
+              "selected": false,
+              "text": "1ms",
+              "value": "1ms"
+            },
+            {
+              "selected": false,
+              "text": "5ms",
+              "value": "5ms"
+            },
+            {
+              "selected": false,
+              "text": "10ms",
+              "value": "10ms"
+            },
+            {
+              "selected": false,
+              "text": "20ms",
+              "value": "20ms"
+            },
+            {
+              "selected": false,
+              "text": "50ms",
+              "value": "50ms"
+            },
+            {
+              "selected": false,
+              "text": "100ms",
+              "value": "100ms"
+            }
+          ],
+          "query": "0ms,1ms,5ms,10ms,20ms,50ms,100ms",
+          "skipUrlSync": false
+        }
+      }
+    ]
+  },
+  "status": {}
+}
