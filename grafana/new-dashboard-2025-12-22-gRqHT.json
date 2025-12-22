@@ -317,45 +317,6 @@
       },
       {
         "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 8
-        },
-        "id": 5,
-        "options": {
-          "spanFilters": {
-            "criticalPathOnly": false,
-            "matchesOnly": false,
-            "serviceNameOperator": "=",
-            "spanNameOperator": "=",
-            "tags": [
-              {
-                "id": "e66abf78-c04",
-                "operator": "="
-              }
-            ]
-          }
-        },
-        "pluginVersion": "12.3.0",
-        "targets": [
-          {
-            "refId": "A"
-          }
-        ],
-        "title": "New panel",
-        "type": "traces"
-      },
-      {
-        "datasource": {
           "type": "tempo",
           "uid": "tempo"
         },
@@ -398,7 +359,7 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 5,
+          "h": 9,
           "w": 24,
           "x": 0,
           "y": 16
@@ -452,6 +413,55 @@
         ],
         "title": "New panel",
         "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "tempo",
+          "uid": "tempo"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 33,
+          "w": 24,
+          "x": 0,
+          "y": 25
+        },
+        "id": 5,
+        "options": {
+          "spanFilters": {
+            "criticalPathOnly": false,
+            "matchesOnly": false,
+            "serviceNameOperator": "=",
+            "spanNameOperator": "=",
+            "tags": [
+              {
+                "id": "e66abf78-c04",
+                "operator": "="
+              }
+            ]
+          }
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "tempo",
+              "uid": "tempo"
+            },
+            "limit": 20,
+            "metricsQueryType": "range",
+            "query": "$traceId",
+            "queryType": "traceql",
+            "refId": "A",
+            "serviceMapUseNativeHistograms": false,
+            "tableType": "traces"
+          }
+        ],
+        "title": "New panel",
+        "type": "traces"
       }
     ],
     "preload": false,
@@ -461,8 +471,8 @@
       "list": [
         {
           "current": {
-            "text": "",
-            "value": ""
+            "text": "38b16769ea747bafcc65500f73771471",
+            "value": "38b16769ea747bafcc65500f73771471"
           },
           "datasource": {
             "type": "tempo",
