@@ -372,8 +372,14 @@
               "footer": {
                 "reducers": []
               },
-              "inspect": false
+              "inspect": true
             },
+            "links": [
+              {
+                "title": "Trace ID",
+                "url": "/d/dbf7vgvfn8y4n4a/node-consensus-deep-dive?orgId=1\u0026var-traceId=${__data.fields[\"traceID\"]}"
+              }
+            ],
             "mappings": [],
             "thresholds": {
               "mode": "absolute",
@@ -398,12 +404,6 @@
           "y": 16
         },
         "id": 4,
-        "links": [
-          {
-            "title": "trace ID",
-            "url": "/d/dbf7vgvfn8y4n4a/node-consensus-deep-dive?orgId=1\u0026var-traceId=${__data.fields[\"traceID\"]}"
-          }
-        ],
         "maxDataPoints": 5,
         "options": {
           "cellHeight": "sm",
@@ -440,13 +440,13 @@
                 "scope": "span"
               }
             ],
-            "limit": 200,
+            "limit": 20,
             "metricsQueryType": "range",
             "query": "{name=\"start_round\"}",
-            "queryType": "traceql",
+            "queryType": "traceqlSearch",
             "refId": "A",
             "serviceMapUseNativeHistograms": false,
-            "spss": 30,
+            "spss": 3,
             "tableType": "traces"
           }
         ],
