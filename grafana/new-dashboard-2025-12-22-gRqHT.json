@@ -447,7 +447,7 @@
             },
             "direction": "backward",
             "editorMode": "builder",
-            "expr": "{service_name=\"hyli\"} | json | target =~ `hyli::consens.*`",
+            "expr": "{service_name=\"hyli\"} | json | target =~ `hyli::consens.*` | line_format `{{.pod}} {{.target}} {{.fields_message}}`",
             "legendFormat": "",
             "queryType": "range",
             "refId": "A"
@@ -612,8 +612,8 @@
       "list": [
         {
           "current": {
-            "text": "68da6695fab33a3d855f6b5c59547c5a",
-            "value": "68da6695fab33a3d855f6b5c59547c5a"
+            "text": "164a7b07a8b304bfa248bab544e8d34",
+            "value": "164a7b07a8b304bfa248bab544e8d34"
           },
           "datasource": {
             "type": "tempo",
@@ -631,7 +631,7 @@
       ]
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
