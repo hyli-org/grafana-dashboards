@@ -290,6 +290,9 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -359,7 +362,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -370,15 +373,19 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "consensus_current_slot{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "Consensus slot",
+            "legendFormat": "Consensus ({{otel_scope_name}})",
+            "range": true,
             "refId": "A"
           },
           {
+            "editorMode": "code",
             "expr": "node_state_current_height{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "Node height",
+            "legendFormat": "Node height ({{otel_scope_name}})",
+            "range": true,
             "refId": "B"
           }
         ],
@@ -386,6 +393,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -455,7 +466,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -466,15 +477,19 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "rate(consensus_commit_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "Consensus commits/s",
+            "legendFormat": "Commits/s ({{otel_scope_name}})",
+            "range": true,
             "refId": "A"
           },
           {
+            "editorMode": "code",
             "expr": "rate(node_state_processed_blocks_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "Processed blocks/s",
+            "legendFormat": "Block/s ({{otel_scope_name}})",
+            "range": true,
             "refId": "B"
           }
         ],
@@ -2645,8 +2660,8 @@
       ]
     },
     "time": {
-      "from": "now-1h",
-      "to": "now"
+      "from": "2025-12-19T18:07:10.704Z",
+      "to": "2025-12-20T07:06:33.910Z"
     },
     "timepicker": {},
     "timezone": "browser",
