@@ -398,6 +398,12 @@
           "y": 16
         },
         "id": 4,
+        "links": [
+          {
+            "title": "trace ID",
+            "url": "/d/dbf7vgvfn8y4n4a/node-consensus-deep-dive?var-traceId=${__data.fields[\"traceID\"]}"
+          }
+        ],
         "maxDataPoints": 5,
         "options": {
           "cellHeight": "sm",
