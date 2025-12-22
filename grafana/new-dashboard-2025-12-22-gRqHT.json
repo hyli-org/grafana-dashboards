@@ -401,13 +401,19 @@
         "links": [
           {
             "title": "trace ID",
-            "url": "/d/dbf7vgvfn8y4n4a/node-consensus-deep-dive?var-traceId=${__data.fields[\"traceID\"]}"
+            "url": "/d/dbf7vgvfn8y4n4a/node-consensus-deep-dive?orgId=1\u0026var-traceId=${__data.fields[\"traceID\"]}"
           }
         ],
         "maxDataPoints": 5,
         "options": {
           "cellHeight": "sm",
-          "showHeader": true
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Start time"
+            }
+          ]
         },
         "pluginVersion": "12.3.0",
         "targets": [
