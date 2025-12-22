@@ -763,6 +763,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -866,12 +870,6 @@
             "intervalFactor": 1,
             "legendFormat": "Settled/s",
             "refId": "B"
-          },
-          {
-            "expr": "rate(node_state_successful_transactions_total{app=~\"$node\"}[$__rate_interval])",
-            "intervalFactor": 1,
-            "legendFormat": "Successful/s",
-            "refId": "C"
           }
         ],
         "title": "Transactions: Unsettled vs Settled / Successful",
@@ -933,7 +931,32 @@
             },
             "unit": "ops"
           },
-          "overrides": []
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "VerifiedProof included/s"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": true,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
         },
         "gridPos": {
           "h": 8,
@@ -2161,34 +2184,23 @@
               {
                 "options": {
                   "0": {
-                    "color": "blue",
-                    "text": "Follower"
-                  }
-                },
-                "type": "value"
-              },
-              {
-                "options": {
+                    "color": "purple",
+                    "index": 0,
+                    "text": "Joining"
+                  },
                   "1": {
-                    "color": "green",
-                    "text": "Leader"
-                  }
-                },
-                "type": "value"
-              },
-              {
-                "options": {
+                    "color": "blue",
+                    "index": 1,
+                    "text": "Follower"
+                  },
                   "2": {
                     "color": "orange",
-                    "text": "Syncing"
-                  }
-                },
-                "type": "value"
-              },
-              {
-                "options": {
+                    "index": 2,
+                    "text": "Leader"
+                  },
                   "3": {
                     "color": "red",
+                    "index": 3,
                     "text": "Timeout"
                   }
                 },
@@ -2237,8 +2249,8 @@
         "pluginVersion": "12.3.0",
         "targets": [
           {
-            "editorMode": "code",
-            "expr": "consensus_current_slot{app=~\"$node\"} * 0",
+            "editorMode": "builder",
+            "expr": "consensus_state",
             "intervalFactor": 1,
             "legendFormat": "{{pod}}",
             "range": true,
@@ -2660,8 +2672,8 @@
       ]
     },
     "time": {
-      "from": "2025-12-19T18:07:10.704Z",
-      "to": "2025-12-20T07:06:33.910Z"
+      "from": "now-15m",
+      "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
