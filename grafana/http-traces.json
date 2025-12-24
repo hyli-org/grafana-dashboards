@@ -46,6 +46,12 @@
               },
               "inspect": false
             },
+            "links": [
+              {
+                "title": "Set Trace",
+                "url": "/d/def82nyexaj5dse/trace-http-requests?orgId=1\u0026var-traceId=${__data.fields[\"traceIdHidden\"]}"
+              }
+            ],
             "mappings": [],
             "thresholds": {
               "mode": "absolute",
@@ -61,7 +67,44 @@
               ]
             }
           },
-          "overrides": []
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Duration"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "gauge"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "http.status"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "applyToRow": false,
+                    "mode": "basic",
+                    "type": "color-background"
+                  }
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
         },
         "gridPos": {
           "h": 15,
@@ -124,7 +167,9 @@
             "options": {
               "excludeByName": {
                 "Name": true,
+                "Span ID": true,
                 "Start time": false,
+                "http.duration": true,
                 "name": false
               },
               "includeByName": {},
@@ -135,17 +180,84 @@
           }
         ],
         "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "tempo",
+          "uid": "tempo"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 2,
+        "options": {
+          "spanFilters": {
+            "criticalPathOnly": false,
+            "matchesOnly": false,
+            "serviceNameOperator": "=",
+            "spanNameOperator": "=",
+            "tags": [
+              {
+                "id": "5d34b9ac-f33",
+                "operator": "="
+              }
+            ]
+          }
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "tempo",
+              "uid": "tempo"
+            },
+            "filters": [
+              {
+                "id": "7ae26611",
+                "operator": "=",
+                "scope": "span"
+              }
+            ],
+            "limit": 20,
+            "metricsQueryType": "range",
+            "query": "${traceId}",
+            "queryType": "traceql",
+            "refId": "A",
+            "serviceMapUseNativeHistograms": false,
+            "tableType": "spans"
+          }
+        ],
+        "title": "Spans",
+        "type": "traces"
       }
     ],
     "preload": false,
-    "refresh": "5s",
+    "refresh": "",
     "schemaVersion": 42,
     "tags": [],
     "templating": {
-      "list": []
+      "list": [
+        {
+          "current": {
+            "text": "9b3e00641e965ff81f2220d896ebf169",
+            "value": "9b3e00641e965ff81f2220d896ebf169"
+          },
+          "name": "traceId",
+          "options": [],
+          "query": "",
+          "type": "custom"
+        }
+      ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-5m",
       "to": "now"
     },
     "timepicker": {},
