@@ -104,7 +104,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "tcp_server_peers{app=~\"$node\", server_name=~\"TcpApiServer\"}[$__rate_interval]",
+            "expr": "tcp_server_peers{app=~\"$node\", server_name=~\"TcpApiServer\"}",
             "format": "time_series",
             "instant": false,
             "interval": "",
