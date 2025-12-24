@@ -1,0 +1,173 @@
+{
+  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "def82nyexaj5dse"
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "tempo",
+          "uid": "tempo"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "footer": {
+                "reducers": []
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "cellHeight": "sm",
+          "showHeader": true
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "tempo",
+              "uid": "tempo"
+            },
+            "filters": [
+              {
+                "id": "4a3552ef",
+                "operator": "=",
+                "scope": "span"
+              },
+              {
+                "id": "span-name",
+                "isCustomValue": false,
+                "operator": "=",
+                "scope": "span",
+                "tag": "name",
+                "value": [
+                  "http-request"
+                ],
+                "valueType": "string"
+              },
+              {
+                "id": "service-name",
+                "isCustomValue": false,
+                "operator": "=",
+                "scope": "resource",
+                "tag": "service.name",
+                "value": [],
+                "valueType": "string"
+              }
+            ],
+            "limit": 20,
+            "metricsQueryType": "range",
+            "query": "{name=\"http-request\"} | select(span.name, span.http.status, span.http.duration)",
+            "queryType": "traceql",
+            "refId": "A",
+            "serviceMapUseNativeHistograms": false,
+            "tableType": "spans"
+          }
+        ],
+        "title": "New panel",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Name": true,
+                "Start time": false,
+                "name": false
+              },
+              "includeByName": {},
+              "indexByName": {},
+              "orderByMode": "auto",
+              "renameByName": {}
+            }
+          },
+          {
+            "id": "filterByValue",
+            "options": {
+              "filters": [
+                {
+                  "config": {
+                    "id": "equal",
+                    "options": {
+                      "value": "GET /_health"
+                    }
+                  },
+                  "fieldName": "name"
+                }
+              ],
+              "match": "any",
+              "type": "exclude"
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "preload": false,
+    "refresh": "5s",
+    "schemaVersion": 42,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Trace - HTTP Requests"
+  }
+}
