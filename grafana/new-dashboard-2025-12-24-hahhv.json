@@ -452,7 +452,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "tcp_server_message_received_total{app=~\"$node\"}",
+            "expr": "increase(tcp_server_message_received_total{app=~\"$node\"}[$__rate_interval])",
             "format": "time_series",
             "instant": false,
             "interval": "",
