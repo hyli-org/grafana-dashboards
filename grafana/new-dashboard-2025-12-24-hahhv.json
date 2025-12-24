@@ -102,9 +102,9 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
+            "editorMode": "code",
             "exemplar": false,
-            "expr": "tcp_server_peers{app=~\"$node\", server_name=~\"TcpApiServer\"}",
+            "expr": "tcp_server_peers{app=~\"$node\", server_name=~\"TcpApiServer\"}[$__rate_interval]",
             "format": "time_series",
             "instant": false,
             "interval": "",
@@ -1700,7 +1700,7 @@
       ]
     },
     "time": {
-      "from": "now-30m",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
