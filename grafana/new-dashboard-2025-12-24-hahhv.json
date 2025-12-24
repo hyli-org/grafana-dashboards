@@ -37,7 +37,7 @@
         },
         "id": 9,
         "panels": [],
-        "title": "TCP SERVER",
+        "title": "TCP SERVER (TcpApiServer)",
         "type": "row"
       },
       {
@@ -176,7 +176,7 @@
             "format": "time_series",
             "instant": false,
             "interval": "",
-            "legendFormat": "{{server_name}}",
+            "legendFormat": "{{server_name}} - {{pod}}",
             "range": true,
             "refId": "A"
           }
@@ -244,7 +244,7 @@
             "format": "time_series",
             "instant": false,
             "interval": "",
-            "legendFormat": "{{server_name}}",
+            "legendFormat": "{{server_name}} - {{pod}}",
             "range": true,
             "refId": "A"
           }
@@ -452,7 +452,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "increase(tcp_server_message_received_total{app=~\"$node\"}[$__rate_interval])",
+            "expr": "increase(tcp_server_message_received_total{app=~\"$node\", server_name=~\"TcpApiServer\"}[$__rate_interval])",
             "format": "time_series",
             "instant": false,
             "interval": "",
