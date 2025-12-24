@@ -1632,7 +1632,11 @@
     ],
     "preload": false,
     "schemaVersion": 42,
-    "tags": [],
+    "tags": [
+      "hyli",
+      "node",
+      "tcp"
+    ],
     "templating": {
       "list": [
         {
