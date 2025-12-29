@@ -128,7 +128,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "tcp_client_message_emitted_total{otel_scope_name=\"catchupper\"}",
+            "expr": "increase(tcp_client_message_emitted_total{otel_scope_name=\"catchupper\"}[$__rate_interval])",
             "legendFormat": "{{pod}} - {{otel_scope_name}}",
             "range": true,
             "refId": "A"
@@ -226,8 +226,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "tcp_client_message_emitted_bytes_total{otel_scope_name=\"catchupper\"}",
+            "editorMode": "code",
+            "expr": "increase(tcp_client_message_emitted_bytes_total{otel_scope_name=\"catchupper\"}[$__rate_interval])",
             "legendFormat": "{{pod}} - {{otel_scope_name}}",
             "range": true,
             "refId": "A"
@@ -325,7 +325,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "tcp_client_message_received_total{otel_scope_name=\"catchupper\"}",
+            "expr": "increase(tcp_client_message_received_total{otel_scope_name=\"catchupper\"}[$__rate_interval])",
             "legendFormat": "{{pod}} - {{otel_scope_name}}",
             "range": true,
             "refId": "A"
@@ -423,8 +423,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "tcp_client_message_emitted_bytes_total{otel_scope_name=\"catchupper\"}",
+            "editorMode": "code",
+            "expr": "increase(tcp_client_message_emitted_bytes_total{otel_scope_name=\"catchupper\"}[$__rate_interval])",
             "legendFormat": "{{pod}} - {{otel_scope_name}}",
             "range": true,
             "refId": "A"
