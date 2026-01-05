@@ -127,6 +127,91 @@
         ],
         "title": "Peer poisoned",
         "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Peer poisoning",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "merlin (hello)"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": []
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 0,
+          "y": 12
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "builder",
+            "expr": "sum by(otel_scope_name, phase) (p2p_server_handshake_total)",
+            "legendFormat": "{{otel_scope_name}} ({{phase}})",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Peer poisoned",
+        "type": "stat"
       }
     ],
     "preload": false,
@@ -136,7 +221,7 @@
       "list": []
     },
     "time": {
-      "from": "now-7d",
+      "from": "now-3h",
       "to": "now"
     },
     "timepicker": {},
