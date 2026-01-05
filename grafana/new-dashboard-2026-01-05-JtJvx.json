@@ -491,7 +491,7 @@
           "type": "prometheus",
           "uid": "mimir"
         },
-        "description": "Peer poisoning",
+        "description": "",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -579,13 +579,13 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_ping_total[1m]))",
+            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_message_total[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}})",
             "range": true,
             "refId": "A"
           }
         ],
-        "title": "P2p tcp events",
+        "title": "P2p tcp pings",
         "type": "timeseries"
       }
     ],
