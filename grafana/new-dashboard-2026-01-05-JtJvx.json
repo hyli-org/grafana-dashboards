@@ -5,11 +5,26 @@
     "name": "daf98omxmqg8aob"
   },
   "spec": {
-    "title": "P2P servers",
-    "uid": "daf98omxmqg8aob",
-    "timezone": "browser",
-    "schemaVersion": 42,
-    "version": 11,
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "links": [],
     "panels": [
       {
         "datasource": {
@@ -103,8 +118,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal, action) (rate(p2p_server_poison{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "editorMode": "code",
+            "expr": "sum by(otel_scope_name, canal, action) (rate(p2p_server_poison_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}} {{action}})",
             "range": true,
             "refId": "A"
@@ -1155,41 +1170,57 @@
         "type": "timeseries"
       }
     ],
+    "preload": false,
+    "schemaVersion": 42,
+    "tags": [],
     "templating": {
       "list": [
         {
-          "name": "otel_scope_name",
-          "type": "query",
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
           "datasource": {
             "type": "prometheus",
             "uid": "mimir"
           },
-          "refresh": 2,
-          "hide": 0,
-          "multi": true,
           "includeAll": true,
+          "multi": true,
+          "name": "otel_scope_name",
+          "options": [],
           "query": "label_values(p2p_server_peers, otel_scope_name)",
-          "sort": 1
+          "refresh": 2,
+          "sort": 1,
+          "type": "query"
         },
         {
-          "name": "canal",
-          "type": "query",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
           "datasource": {
             "type": "prometheus",
             "uid": "mimir"
           },
-          "refresh": 2,
-          "hide": 0,
-          "multi": true,
           "includeAll": true,
+          "multi": true,
+          "name": "canal",
+          "options": [],
           "query": "label_values(p2p_server_message, canal)",
-          "sort": 1
+          "refresh": 2,
+          "sort": 1,
+          "type": "query"
         }
       ]
     },
     "time": {
-      "from": "now-6h",
-      "to": "now"
-    }
+      "from": "2026-01-05T05:30:10.874Z",
+      "to": "2026-01-05T17:30:10.874Z"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "P2P servers"
   }
 }
