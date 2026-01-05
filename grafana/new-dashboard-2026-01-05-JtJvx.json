@@ -119,7 +119,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal, action) (rate(p2p_server_poison{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, canal, action) (rate(p2p_server_poison_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}} {{action}})",
             "range": true,
             "refId": "A"
@@ -221,7 +221,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal, type) (rate(p2p_server_tcp_event{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, canal, type) (rate(p2p_server_tcp_event_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}} {{type}})",
             "range": true,
             "refId": "A"
@@ -392,7 +392,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, phase) (rate(p2p_server_handshake{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, phase) (rate(p2p_server_handshake_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{phase}})",
             "range": true,
             "refId": "A"
@@ -563,7 +563,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_ping{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_ping_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}})",
             "range": true,
             "refId": "A"
@@ -778,7 +778,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal, phase) (rate(p2p_server_handshake_throttle{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, canal, phase) (rate(p2p_server_handshake_throttle_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}} {{phase}})",
             "range": true,
             "refId": "A"
@@ -880,7 +880,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_rehandshake_error{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_rehandshake_error_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}})",
             "range": true,
             "refId": "A"
@@ -1037,7 +1037,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "topk(10, rate(p2p_server_poison{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[5m]))",
+            "expr": "topk(10, rate(p2p_server_poison_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[5m]))",
             "legendFormat": "{{peer}} ({{canal}} {{action}})",
             "range": true,
             "refId": "A"
@@ -1149,7 +1149,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_tcp_event{type=\"error\", otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_tcp_event_total{type=\"error\", otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "error {{otel_scope_name}} ({{canal}})",
             "range": true,
             "refId": "A"
@@ -1160,7 +1160,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_tcp_event{type=\"closed\", otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "expr": "sum by(otel_scope_name, canal) (rate(p2p_server_tcp_event_total{type=\"closed\", otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "closed {{otel_scope_name}} ({{canal}})",
             "range": true,
             "refId": "B"
