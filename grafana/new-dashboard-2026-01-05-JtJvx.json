@@ -118,8 +118,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "code",
-            "expr": "sum by(otel_scope_name, canal, action) (rate(p2p_server_poison_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "editorMode": "builder",
+            "expr": "sum by(otel_scope_name, canal, action) (rate(p2p_server_poison{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}} {{action}})",
             "range": true,
             "refId": "A"
@@ -1177,9 +1177,11 @@
       "list": [
         {
           "current": {
-            "text": "All",
+            "text": [
+              "arthur"
+            ],
             "value": [
-              "$__all"
+              "arthur"
             ]
           },
           "datasource": {
@@ -1204,11 +1206,16 @@
             "type": "prometheus",
             "uid": "mimir"
           },
+          "definition": "label_values(p2p_server_message_total,canal)",
           "includeAll": true,
           "multi": true,
           "name": "canal",
           "options": [],
-          "query": "label_values(p2p_server_message, canal)",
+          "query": {
+            "qryType": 1,
+            "query": "label_values(p2p_server_message_total,canal)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
           "refresh": 2,
           "sort": 1,
           "type": "query"
