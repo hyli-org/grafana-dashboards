@@ -119,8 +119,8 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(peer) (p2p_server_poison_total)",
-            "legendFormat": "__auto",
+            "expr": "sum by(peer, otel_scope_name) (p2p_server_poison_total)",
+            "legendFormat": "{{otel_scope_name}} poisons {{peer}}",
             "range": true,
             "refId": "A"
           }
