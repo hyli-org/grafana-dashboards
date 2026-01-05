@@ -981,8 +981,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "sum by(otel_scope_name, canal, direction, result) (rate(p2p_server_message{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
+            "editorMode": "code",
+            "expr": "sum by(otel_scope_name, canal, direction, result) (rate(p2p_server_message_total{otel_scope_name=~\"$otel_scope_name\", canal=~\"$canal\"}[1m]))",
             "legendFormat": "{{otel_scope_name}} ({{canal}} {{direction}} {{result}})",
             "range": true,
             "refId": "A"
@@ -1001,6 +1001,16 @@
           "defaults": {
             "color": {
               "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "footer": {
+                "reducers": []
+              },
+              "inspect": false
             },
             "mappings": [],
             "thresholds": {
@@ -1027,6 +1037,7 @@
         },
         "id": 11,
         "options": {
+          "cellHeight": "sm",
           "showHeader": true
         },
         "pluginVersion": "12.3.0",
@@ -1177,11 +1188,9 @@
       "list": [
         {
           "current": {
-            "text": [
-              "arthur"
-            ],
+            "text": "All",
             "value": [
-              "arthur"
+              "$__all"
             ]
           },
           "datasource": {
@@ -1200,7 +1209,9 @@
         {
           "current": {
             "text": "All",
-            "value": "$__all"
+            "value": [
+              "$__all"
+            ]
           },
           "datasource": {
             "type": "prometheus",
@@ -1223,8 +1234,8 @@
       ]
     },
     "time": {
-      "from": "2026-01-05T05:30:10.874Z",
-      "to": "2026-01-05T17:30:10.874Z"
+      "from": "now-30d",
+      "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
