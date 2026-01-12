@@ -40,9 +40,10 @@
               "axisBorderShow": false,
               "axisCenteredZero": false,
               "axisColorMode": "text",
+              "axisGridShow": true,
               "axisLabel": "",
-              "axisPlacement": "hidden",
-              "axisSoftMin": 0,
+              "axisPlacement": "auto",
+              "axisSoftMin": 1,
               "barAlignment": 0,
               "barWidthFactor": 0.5,
               "drawStyle": "bars",
@@ -61,7 +62,8 @@
               "lineWidth": 0,
               "pointSize": 0,
               "scaleDistribution": {
-                "type": "linear"
+                "log": 10,
+                "type": "log"
               },
               "showPoints": "auto",
               "showValues": false,
@@ -164,7 +166,7 @@
           ]
         },
         "gridPos": {
-          "h": 8,
+          "h": 4,
           "w": 24,
           "x": 0,
           "y": 0
@@ -181,6 +183,9 @@
             "placement": "bottom",
             "showLegend": true
           },
+          "timezone": [
+            ""
+          ],
           "tooltip": {
             "hideZeros": false,
             "mode": "single",
@@ -218,7 +223,7 @@
           "h": 19,
           "w": 24,
           "x": 0,
-          "y": 8
+          "y": 4
         },
         "id": 1,
         "options": {
@@ -289,7 +294,7 @@
       ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-12h",
       "to": "now"
     },
     "timepicker": {},
