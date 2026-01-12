@@ -253,7 +253,7 @@
             "refId": "A"
           }
         ],
-        "title": "New panel",
+        "title": "Logs",
         "type": "logs"
       }
     ],
@@ -267,10 +267,10 @@
           "allowCustomValue": false,
           "current": {
             "text": [
-              "hyli-node-arthur-0"
+              "All"
             ],
             "value": [
-              "hyli-node-arthur-0"
+              "$__all"
             ]
           },
           "datasource": {
@@ -278,6 +278,7 @@
             "uid": "loki"
           },
           "definition": "",
+          "includeAll": true,
           "multi": true,
           "name": "node",
           "options": [],
@@ -294,8 +295,8 @@
       ]
     },
     "time": {
-      "from": "now-12h",
-      "to": "now"
+      "from": "2026-01-11T15:38:27.287Z",
+      "to": "2026-01-11T15:40:05.308Z"
     },
     "timepicker": {},
     "timezone": "browser",
