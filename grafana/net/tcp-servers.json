@@ -758,9 +758,9 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "",
-            "legendFormat": "__auto",
+            "editorMode": "code",
+            "expr": "100 * sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval]) + rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval]) + rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval]) + rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
+            "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
           }
@@ -833,9 +833,9 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "code",
-            "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
-            "legendFormat": "{{server_name}}",
+            "editorMode": "builder",
+            "expr": "",
+            "legendFormat": "__auto",
             "range": true,
             "refId": "A"
           }
