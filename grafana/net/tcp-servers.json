@@ -279,8 +279,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval])) + (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval]))",
+            "editorMode": "code",
+            "expr": "sum by (server_name) (\n  rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval])\n+ rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval])\n)\n",
             "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
@@ -1327,8 +1327,8 @@
         },
         {
           "current": {
-            "text": "ConsensusNetMessage::Prepare",
-            "value": "ConsensusNetMessage::Prepare"
+            "text": "ConsensusNetMessage::PrepareVote",
+            "value": "ConsensusNetMessage::PrepareVote"
           },
           "definition": "label_values(tcp_server_message_received_total,message_type)",
           "name": "message_type",
@@ -1345,8 +1345,8 @@
       ]
     },
     "time": {
-      "from": "now-3h",
-      "to": "now"
+      "from": "2026-01-13T02:59:16.888Z",
+      "to": "2026-01-13T14:59:16.888Z"
     },
     "timepicker": {},
     "timezone": "browser",
