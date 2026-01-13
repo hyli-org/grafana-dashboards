@@ -395,7 +395,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "expr": "sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval]))",
             "legendFormat": "rx {{server_name}}",
             "range": true,
             "refId": "A"
@@ -405,8 +405,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "editorMode": "builder",
+            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval]))",
             "legendFormat": "tx {{server_name}}",
             "range": true,
             "refId": "B"
@@ -508,8 +508,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "editorMode": "builder",
+            "expr": "sum by(server_name) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval]))",
             "legendFormat": "rx {{server_name}}",
             "range": true,
             "refId": "A"
@@ -519,8 +519,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "editorMode": "builder",
+            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval]))",
             "legendFormat": "tx {{server_name}}",
             "range": true,
             "refId": "B"
@@ -1326,8 +1326,8 @@
         },
         {
           "current": {
-            "text": "ConsensusNetMessage::Confirm",
-            "value": "ConsensusNetMessage::Confirm"
+            "text": "ConsensusNetMessage::Prepare",
+            "value": "ConsensusNetMessage::Prepare"
           },
           "definition": "label_values(tcp_server_message_received_total,message_type)",
           "name": "message_type",
