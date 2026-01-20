@@ -365,32 +365,7 @@
               ]
             }
           },
-          "overrides": [
-            {
-              "__systemRef": "hideSeriesFrom",
-              "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "rx P2P-merlin"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
-              },
-              "properties": [
-                {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": true,
-                    "viz": true
-                  }
-                }
-              ]
-            }
-          ]
+          "overrides": []
         },
         "gridPos": {
           "h": 12,
@@ -1350,10 +1325,11 @@
         },
         {
           "current": {
-            "text": "MempoolNetMessage::DataProposal",
-            "value": "MempoolNetMessage::DataProposal"
+            "text": "MempoolNetMessage::DataVote",
+            "value": "MempoolNetMessage::DataVote"
           },
           "definition": "label_values(tcp_server_message_received_total,message_type)",
+          "includeAll": true,
           "name": "message_type",
           "options": [],
           "query": {
