@@ -758,7 +758,7 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "code",
+            "editorMode": "builder",
             "expr": "100 * sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval]) + rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval]) + rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval]) + rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
             "legendFormat": "{{server_name}}",
             "range": true,
@@ -833,7 +833,7 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "code",
+            "editorMode": "builder",
             "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
             "legendFormat": "{{server_name}}",
             "range": true,
@@ -1160,7 +1160,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(server_name) (increase(tcp_server_message_send_time_seconds_sum{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__range])) / (clamp_min(sum by(server_name) (increase(tcp_server_message_send_time_seconds_count{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__range])), 1))",
+            "expr": "sum by(server_name) (increase(tcp_server_message_send_time_seconds_sum{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__range])) / (clamp_min(sum by(server_name) (increase(tcp_server_message_send_time_seconds_count{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__range])), 1))",
             "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
