@@ -406,7 +406,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
+            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=\"$message_type\"}[$__rate_interval]))",
             "legendFormat": "tx {{server_name}}",
             "range": true,
             "refId": "B"
@@ -1325,8 +1325,8 @@
         },
         {
           "current": {
-            "text": "All",
-            "value": "$__all"
+            "text": "MempoolNetMessage::DataVote",
+            "value": "MempoolNetMessage::DataVote"
           },
           "definition": "label_values(tcp_server_message_received_total,message_type)",
           "includeAll": true,
