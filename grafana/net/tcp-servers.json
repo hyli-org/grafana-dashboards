@@ -606,7 +606,7 @@
         "type": "table"
       },
       {
-        "collapsed": true,
+        "collapsed": false,
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -614,362 +614,361 @@
           "y": 26
         },
         "id": 103,
-        "panels": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "description": "Errors / total message events",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "decimals": 2,
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 90
-                    },
-                    {
-                      "color": "green",
-                      "value": 98
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 12,
-              "w": 7,
-              "x": 0,
-              "y": 27
-            },
-            "id": 7,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "percentChangeColorMode": "standard",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "12.3.0",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
-                "legendFormat": "{{server_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Message error rate",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "description": "Closed / total message events",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "decimals": 2,
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 90
-                    },
-                    {
-                      "color": "green",
-                      "value": 98
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 12,
-              "w": 7,
-              "x": 7,
-              "y": 27
-            },
-            "id": 8,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "percentChangeColorMode": "standard",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "12.3.0",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
-                "legendFormat": "{{server_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Message close rate",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "description": "Send errors / emitted messages",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "decimals": 2,
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 90
-                    },
-                    {
-                      "color": "green",
-                      "value": 98
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 12,
-              "w": 7,
-              "x": 14,
-              "y": 27
-            },
-            "id": 9,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "percentChangeColorMode": "standard",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "12.3.0",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "builder",
-                "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
-                "legendFormat": "{{server_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Send error rate",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "description": "Error and closed message rates",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "barWidthFactor": 0.6,
-                  "drawStyle": "line",
-                  "fillOpacity": 10,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "linear",
-                  "lineStyle": {
-                    "fill": "solid"
-                  },
-                  "lineWidth": 1,
-                  "pointSize": 5,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "showValues": false,
-                  "spanNulls": false,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "normal"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
-                    }
-                  ]
-                }
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 12,
-              "w": 7,
-              "x": 0,
-              "y": 39
-            },
-            "id": 10,
-            "options": {
-              "legend": {
-                "calcs": [],
-                "displayMode": "list",
-                "placement": "bottom",
-                "showLegend": true
-              },
-              "tooltip": {
-                "hideZeros": false,
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "pluginVersion": "12.3.0",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "sum by(server_name) (rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
-                "hide": false,
-                "legendFormat": "error {{server_name}}",
-                "range": true,
-                "refId": "A"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval]))",
-                "hide": false,
-                "legendFormat": "closed {{server_name}}",
-                "range": true,
-                "refId": "B"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
-                "hide": false,
-                "legendFormat": "send_error {{server_name}}",
-                "range": true,
-                "refId": "C"
-              }
-            ],
-            "title": "Errors vs closed",
-            "type": "timeseries"
-          }
-        ],
+        "panels": [],
         "title": "Errors",
         "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Errors / total message events",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 0,
+          "y": 27
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
+            "legendFormat": "{{server_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Message error rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Closed / total message events",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 7,
+          "y": 27
+        },
+        "id": 8,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
+            "legendFormat": "{{server_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Message close rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Send errors / emitted messages",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 14,
+          "y": 27
+        },
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "builder",
+            "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
+            "legendFormat": "{{server_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Send error rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Error and closed message rates",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 0,
+          "y": 39
+        },
+        "id": 10,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "sum by(server_name) (rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "hide": false,
+            "legendFormat": "error {{server_name}}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "hide": false,
+            "legendFormat": "closed {{server_name}}",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "hide": false,
+            "legendFormat": "send_error {{server_name}}",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "title": "Errors vs closed",
+        "type": "timeseries"
       },
       {
         "collapsed": false,
@@ -977,7 +976,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 27
+          "y": 51
         },
         "id": 104,
         "panels": [],
@@ -1054,7 +1053,7 @@
           "h": 12,
           "w": 7,
           "x": 0,
-          "y": 28
+          "y": 52
         },
         "id": 11,
         "options": {
@@ -1136,7 +1135,7 @@
           "h": 12,
           "w": 7,
           "x": 7,
-          "y": 28
+          "y": 52
         },
         "id": 12,
         "options": {
@@ -1239,7 +1238,7 @@
           "h": 12,
           "w": 7,
           "x": 14,
-          "y": 28
+          "y": 52
         },
         "id": 13,
         "options": {
@@ -1338,7 +1337,7 @@
           "h": 12,
           "w": 7,
           "x": 14,
-          "y": 40
+          "y": 64
         },
         "id": 105,
         "options": {
@@ -1362,8 +1361,8 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(client_name) (tcp_client_message_emitted_total)",
-            "legendFormat": "{{client_name}}",
+            "expr": "sum by(client_name, pod) (tcp_client_message_emitted_total)",
+            "legendFormat": "{{pod}}.{{client_name}}",
             "range": true,
             "refId": "A"
           }
@@ -1381,9 +1380,7 @@
         {
           "current": {
             "text": "All",
-            "value": [
-              "$__all"
-            ]
+            "value": "$__all"
           },
           "datasource": {
             "type": "prometheus",
@@ -1426,8 +1423,8 @@
         },
         {
           "current": {
-            "text": "ConsensusNetMessage::Commit",
-            "value": "ConsensusNetMessage::Commit"
+            "text": "All",
+            "value": "$__all"
           },
           "definition": "label_values(tcp_server_message_received_total,message_type)",
           "includeAll": true,
@@ -1445,7 +1442,7 @@
       ]
     },
     "time": {
-      "from": "now-30m",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {},
