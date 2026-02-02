@@ -389,7 +389,7 @@
             "editorMode": "code",
             "expr": "consensus_current_slot{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "Consensus ({{otel_scope_name}})",
+            "legendFormat": "Consensus ({{node_name}})",
             "range": true,
             "refId": "A"
           },
@@ -397,7 +397,7 @@
             "editorMode": "code",
             "expr": "node_state_current_height{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "Node height ({{otel_scope_name}})",
+            "legendFormat": "Node height ({{node_name}})",
             "range": true,
             "refId": "B"
           }
@@ -862,7 +862,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -873,15 +873,19 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "node_state_unsettled_transactions{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "Unsettled",
+            "legendFormat": "Unsettled ({{node_name}})",
+            "range": true,
             "refId": "A"
           },
           {
+            "editorMode": "code",
             "expr": "rate(node_state_settled_transactions_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "Settled/s",
+            "legendFormat": "Settled/s ({{node_name}})",
+            "range": true,
             "refId": "B"
           }
         ],
@@ -889,6 +893,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -944,32 +952,7 @@
             },
             "unit": "ops"
           },
-          "overrides": [
-            {
-              "__systemRef": "hideSeriesFrom",
-              "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "VerifiedProof included/s"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
-              },
-              "properties": [
-                {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": true,
-                    "viz": true
-                  }
-                }
-              ]
-            }
-          ]
+          "overrides": []
         },
         "gridPos": {
           "h": 8,
@@ -983,7 +966,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -994,9 +977,11 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "rate(mempool_api_tx_total{app=~\"$node\",status=\"included\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "{{tx_kind}} included/s",
+            "legendFormat": "{{tx_kind}} included/s ({{node_name}})",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -1004,6 +989,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1073,7 +1062,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -1084,21 +1073,27 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "rate(mempool_constructed_block_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "Constructed blocks/s",
+            "legendFormat": "Constructed blocks/s ({{node_name}})",
+            "range": true,
             "refId": "A"
           },
           {
+            "editorMode": "code",
             "expr": "rate(mempool_created_data_proposals_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "Created data proposals/s",
+            "legendFormat": "Created data proposals/s ({{node_name}})",
+            "range": true,
             "refId": "B"
           },
           {
+            "editorMode": "code",
             "expr": "rate(mempool_new_cut_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "New cuts/s ({{nb_validators}} validators)",
+            "legendFormat": "New cuts/s ({{nb_validators}} validators) ({{node_name}})",
+            "range": true,
             "refId": "C"
           }
         ],
@@ -1106,6 +1101,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1175,7 +1174,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -1186,15 +1185,19 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
+            "editorMode": "code",
             "expr": "sum by (client_id,msg) (rate(bus_receive_total{app=~\"$node\"}[$__rate_interval]))",
             "intervalFactor": 1,
-            "legendFormat": "recv {{client_id}} {{msg}}",
+            "legendFormat": "recv {{client_id}} {{msg}} ({{node_name}})",
+            "range": true,
             "refId": "A"
           },
           {
+            "editorMode": "code",
             "expr": "sum by (client_id,msg) (rate(bus_send_total{app=~\"$node\"}[$__rate_interval]))",
             "intervalFactor": 1,
-            "legendFormat": "send {{client_id}} {{msg}}",
+            "legendFormat": "send {{client_id}} {{msg}} ({{node_name}})",
+            "range": true,
             "refId": "B"
           }
         ],
