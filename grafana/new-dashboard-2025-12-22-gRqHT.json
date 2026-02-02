@@ -127,8 +127,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "consensus_current_slot",
+            "editorMode": "code",
+            "expr": "consensus_current_slot{node_name=~\"$node_name\"}",
             "legendFormat": "{{label_name}}",
             "range": true,
             "refId": "A"
@@ -221,8 +221,8 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "editorMode": "builder",
-            "expr": "rate(consensus_commit_total[$__rate_interval])",
+            "editorMode": "code",
+            "expr": "rate(consensus_commit_total{node_name=~\"$node_name\"}[$__rate_interval])",
             "legendFormat": "{{node_name}}",
             "range": true,
             "refId": "A"
@@ -318,8 +318,8 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "editorMode": "builder",
-            "expr": "consensus_state",
+            "editorMode": "code",
+            "expr": "consensus_state{node_name=~\"$node_name\"}",
             "legendFormat": "{{otel_scope_name}}",
             "range": true,
             "refId": "A"
@@ -412,8 +412,8 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "editorMode": "builder",
-            "expr": "rate(consensus_on_timeout_ok_total[$__rate_interval])",
+            "editorMode": "code",
+            "expr": "rate(consensus_on_timeout_ok_total{node_name=~\"$node_name\"}[$__rate_interval])",
             "legendFormat": "{{otel_scope_name}}",
             "range": true,
             "refId": "A"
@@ -459,8 +459,8 @@
               "uid": "loki"
             },
             "direction": "backward",
-            "editorMode": "builder",
-            "expr": "{app=\"hyli-node\"} | json | target =~ `hyli::consens.*` | line_format `{{.pod}} {{.target}} {{.fields_message}}`",
+            "editorMode": "code",
+            "expr": "{app=\"hyli-node\",node_name=~\"$node_name\"} | json | target =~ `hyli::consens.*` | line_format `{{.pod}} {{.target}} {{.fields_message}}`",
             "legendFormat": "",
             "queryType": "range",
             "refId": "A"
@@ -476,19 +476,26 @@
     "templating": {
       "list": [
         {
+          "allValue": ".+",
           "current": {
-            "text": "",
-            "value": ""
+            "text": "All",
+            "value": "$__all"
           },
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "prometheus",
+            "uid": "mimir"
           },
-          "definition": "",
-          "label": "Trace to check",
-          "name": "traceId",
+          "definition": "label_values(node_name)",
+          "description": "",
+          "includeAll": true,
+          "label": "Node name",
+          "name": "node_name",
           "options": [],
-          "query": "",
+          "query": {
+            "qryType": 1,
+            "query": "label_values(node_name)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
           "refresh": 1,
           "regex": "",
           "regexApplyTo": "value",
@@ -497,8 +504,8 @@
       ]
     },
     "time": {
-      "from": "2026-01-30T14:04:00.943Z",
-      "to": "2026-01-30T16:32:59.535Z"
+      "from": "now-6h",
+      "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
