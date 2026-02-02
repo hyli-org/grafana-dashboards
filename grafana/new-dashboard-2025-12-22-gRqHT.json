@@ -24,7 +24,20 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/hyli-org/grafana-dashboards/blob/main/grafana/new-dashboard-2025-12-22-gRqHT.json"
+      }
+    ],
     "panels": [
       {
         "datasource": {
@@ -99,7 +112,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -107,7 +120,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "datasource": {
@@ -116,7 +129,7 @@
             },
             "editorMode": "builder",
             "expr": "consensus_current_slot",
-            "legendFormat": "{{otel_scope_name}}",
+            "legendFormat": "{{label_name}}",
             "range": true,
             "refId": "A"
           }
@@ -197,7 +210,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -205,12 +218,12 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "builder",
             "expr": "rate(consensus_commit_total[$__rate_interval])",
-            "legendFormat": "{{otel_scope_name}}",
+            "legendFormat": "{{node_name}}",
             "range": true,
             "refId": "A"
           }
@@ -302,7 +315,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "builder",
@@ -396,7 +409,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "builder",
@@ -438,7 +451,7 @@
           "timestampResolution": "ms",
           "wrapLogMessage": false
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "datasource": {
@@ -447,7 +460,7 @@
             },
             "direction": "backward",
             "editorMode": "builder",
-            "expr": "{service_name=\"hyli\"} | json | target =~ `hyli::consens.*` | line_format `{{.pod}} {{.target}} {{.fields_message}}`",
+            "expr": "{app=\"hyli-node\"} | json | target =~ `hyli::consens.*` | line_format `{{.pod}} {{.target}} {{.fields_message}}`",
             "legendFormat": "",
             "queryType": "range",
             "refId": "A"
@@ -517,7 +530,7 @@
             }
           ]
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "datasource": {
@@ -573,19 +586,20 @@
         "id": 5,
         "options": {
           "spanFilters": {
+            "adhocFilters": [],
             "criticalPathOnly": false,
             "matchesOnly": false,
             "serviceNameOperator": "=",
             "spanNameOperator": "=",
             "tags": [
               {
-                "id": "e66abf78-c04",
+                "id": "4bbfdd5e-969",
                 "operator": "="
               }
             ]
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "datasource": {
@@ -612,8 +626,8 @@
       "list": [
         {
           "current": {
-            "text": "164a7b07a8b304bfa248bab544e8d34",
-            "value": "164a7b07a8b304bfa248bab544e8d34"
+            "text": "",
+            "value": ""
           },
           "datasource": {
             "type": "tempo",
@@ -626,16 +640,18 @@
           "query": "",
           "refresh": 1,
           "regex": "",
+          "regexApplyTo": "value",
           "type": "query"
         }
       ]
     },
     "time": {
-      "from": "now-15m",
-      "to": "now"
+      "from": "2026-01-30T14:04:00.943Z",
+      "to": "2026-01-30T16:32:59.535Z"
     },
     "timepicker": {},
     "timezone": "browser",
-    "title": "Node consensus deep dive"
+    "title": "Node consensus deep dive",
+    "weekStart": ""
   }
 }
