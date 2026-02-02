@@ -24,7 +24,20 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/hyli-org/grafana-dashboards/blob/main/grafana/node-overview.json"
+      }
+    ],
     "panels": [
       {
         "datasource": {
@@ -73,7 +86,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -135,7 +148,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -205,7 +218,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -275,7 +288,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -370,7 +383,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -474,7 +487,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -546,7 +559,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "sum by (tx_kind) (rate(mempool_api_tx_total{app=~\"$node\",status=\"included\"}[$__rate_interval]))",
@@ -608,7 +621,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "sum by (msg) (rate(bus_receive_total{app=~\"$node\"}[$__rate_interval]))",
@@ -677,7 +690,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -748,7 +761,7 @@
           "textMode": "auto",
           "wideLayout": true
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -857,7 +870,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "node_state_unsettled_transactions{app=~\"$node\"}",
@@ -978,7 +991,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "rate(mempool_api_tx_total{app=~\"$node\",status=\"included\"}[$__rate_interval])",
@@ -1068,7 +1081,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "rate(mempool_constructed_block_total{app=~\"$node\"}[$__rate_interval])",
@@ -1170,7 +1183,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "sum by (client_id,msg) (rate(bus_receive_total{app=~\"$node\"}[$__rate_interval]))",
@@ -1270,7 +1283,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "builder",
@@ -1343,7 +1356,7 @@
             "unit": "ms"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "sum(rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",validator_pubkey=~\"$validator\"}[$__rate_interval])) by (le)",
@@ -1437,7 +1450,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "builder",
@@ -1529,7 +1542,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "histogram_quantile(0.95, sum by (le, msg_type, validator_pubkey) (rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",validator_pubkey=~\"$validator\"}[$__rate_interval])))",
@@ -1619,7 +1632,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "p2p_server_peers{app=~\"$node\"}",
@@ -1715,7 +1728,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "sum by (server_name) (rate(tcp_server_message_emitted_bytes_total{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval]))",
@@ -1811,7 +1824,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "histogram_quantile(0.95, sum by (le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval])))",
@@ -1882,7 +1895,7 @@
           "sizing": "auto",
           "text": {}
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "code",
@@ -2051,7 +2064,7 @@
           "showHeader": true,
           "sortBy": []
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "node_state_current_height{app=~\"$node\"}",
@@ -2246,7 +2259,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "editorMode": "builder",
@@ -2363,7 +2376,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "p2p_server_peers{app=~\"$node\"}",
@@ -2481,7 +2494,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "sum by (validator_pubkey) (rate(netmessage_delay_milliseconds_count{app=~\"$node\",validator_pubkey=~\"$validator\"}[$__rate_interval]))",
@@ -2593,7 +2606,7 @@
             "sort": "none"
           }
         },
-        "pluginVersion": "12.3.0",
+        "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
             "expr": "rate(tcp_server_message_emitted_total{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval])",
@@ -2623,21 +2636,33 @@
       "list": [
         {
           "current": {
-            "text": "All",
-            "value": "$__all"
+            "text": "hyli-node",
+            "value": "hyli-node"
           },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values(kube_pod_labels,app)",
           "includeAll": true,
           "label": "Node",
           "name": "node",
           "options": [],
-          "query": "label_values(consensus_current_slot, app)",
+          "query": {
+            "qryType": 1,
+            "query": "label_values(kube_pod_labels,app)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
           "refresh": 1,
           "regex": "",
+          "regexApplyTo": "value",
           "type": "query"
         },
         {
           "current": {
-            "text": "All",
+            "text": [
+              "All"
+            ],
             "value": [
               "$__all"
             ]
@@ -2650,14 +2675,13 @@
           "query": "label_values(netmessage_delay_milliseconds_bucket{app=~\"$node\"}, validator_pubkey)",
           "refresh": 1,
           "regex": "",
+          "regexApplyTo": "value",
           "type": "query"
         },
         {
           "current": {
             "text": "All",
-            "value": [
-              "$__all"
-            ]
+            "value": "$__all"
           },
           "includeAll": true,
           "label": "TCP Server",
@@ -2667,16 +2691,18 @@
           "query": "label_values(tcp_server_message_emitted_total{app=~\"$node\"}, server_name)",
           "refresh": 1,
           "regex": "",
+          "regexApplyTo": "value",
           "type": "query"
         }
       ]
     },
     "time": {
-      "from": "now-15m",
-      "to": "now"
+      "from": "2026-01-30T14:34:03.655Z",
+      "to": "2026-01-30T19:27:40.591Z"
     },
     "timepicker": {},
     "timezone": "browser",
-    "title": "Node Overview"
+    "title": "Node Overview",
+    "weekStart": ""
   }
 }
