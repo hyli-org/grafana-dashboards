@@ -71,7 +71,7 @@
         "id": 12,
         "options": {
           "colorMode": "value",
-          "graphMode": "area",
+          "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
           "percentChangeColorMode": "standard",
@@ -92,7 +92,7 @@
             "editorMode": "code",
             "expr": "consensus_current_slot{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{pod}}",
+            "legendFormat": "{{ node_name}}",
             "range": true,
             "refId": "A"
           }
@@ -133,7 +133,7 @@
         "id": 13,
         "options": {
           "colorMode": "value",
-          "graphMode": "area",
+          "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
           "percentChangeColorMode": "standard",
@@ -154,7 +154,7 @@
             "editorMode": "code",
             "expr": "node_state_current_height{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{pod}}",
+            "legendFormat": "{{node_name}}",
             "range": true,
             "refId": "A"
           }
@@ -203,7 +203,7 @@
         "id": 14,
         "options": {
           "colorMode": "background",
-          "graphMode": "area",
+          "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
           "percentChangeColorMode": "standard",
@@ -224,7 +224,7 @@
             "editorMode": "code",
             "expr": "node_state_unsettled_transactions{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{pod}}",
+            "legendFormat": "{{node_name}}",
             "range": true,
             "refId": "A"
           }
@@ -273,7 +273,7 @@
         "id": 15,
         "options": {
           "colorMode": "background",
-          "graphMode": "area",
+          "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
           "percentChangeColorMode": "standard",
@@ -294,7 +294,7 @@
             "editorMode": "code",
             "expr": "p2p_server_peers{app=~\"$node\"}",
             "intervalFactor": 1,
-            "legendFormat": "{{pod}}",
+            "legendFormat": "{{node_name}}",
             "range": true,
             "refId": "A"
           }
@@ -2663,12 +2663,8 @@
         },
         {
           "current": {
-            "text": [
-              "All"
-            ],
-            "value": [
-              "$__all"
-            ]
+            "text": "All",
+            "value": "$__all"
           },
           "includeAll": true,
           "label": "Validator",
@@ -2700,7 +2696,7 @@
       ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
