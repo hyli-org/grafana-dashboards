@@ -57,8 +57,7 @@
                   "value": 0
                 }
               ]
-            },
-            "unit": "short"
+            }
           },
           "overrides": []
         },
@@ -119,8 +118,7 @@
                   "value": 0
                 }
               ]
-            },
-            "unit": "short"
+            }
           },
           "overrides": []
         },
@@ -2696,7 +2694,7 @@
       ]
     },
     "time": {
-      "from": "now-3h",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
