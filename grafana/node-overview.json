@@ -491,7 +491,7 @@
             "editorMode": "code",
             "expr": "rate(consensus_commit_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "Commits/s ({{otel_scope_name}})",
+            "legendFormat": "Commits/s ({{node_name}})",
             "range": true,
             "refId": "A"
           },
@@ -499,7 +499,7 @@
             "editorMode": "code",
             "expr": "rate(node_state_processed_blocks_total{app=~\"$node\"}[$__rate_interval])",
             "intervalFactor": 1,
-            "legendFormat": "Block/s ({{otel_scope_name}})",
+            "legendFormat": "Block/s ({{node_name}})",
             "range": true,
             "refId": "B"
           }
@@ -2694,7 +2694,7 @@
       ]
     },
     "time": {
-      "from": "now-30m",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
