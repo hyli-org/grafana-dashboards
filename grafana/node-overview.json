@@ -89,10 +89,12 @@
         "targets": [
           {
             "editorMode": "code",
+            "exemplar": false,
             "expr": "consensus_current_slot{app=~\"$node\"}",
+            "instant": true,
             "intervalFactor": 1,
             "legendFormat": "{{ node_name}}",
-            "range": true,
+            "range": false,
             "refId": "A"
           }
         ],
@@ -150,10 +152,12 @@
         "targets": [
           {
             "editorMode": "code",
+            "exemplar": false,
             "expr": "node_state_current_height{app=~\"$node\"}",
+            "instant": true,
             "intervalFactor": 1,
             "legendFormat": "{{node_name}}",
-            "range": true,
+            "range": false,
             "refId": "A"
           }
         ],
@@ -2694,8 +2698,8 @@
       ]
     },
     "time": {
-      "from": "now-15m",
-      "to": "now"
+      "from": "2026-02-06T15:37:12.048Z",
+      "to": "2026-02-09T09:02:17.503Z"
     },
     "timepicker": {},
     "timezone": "browser",
