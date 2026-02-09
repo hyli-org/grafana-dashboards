@@ -2698,8 +2698,8 @@
       ]
     },
     "time": {
-      "from": "2026-02-07T20:55:26.605Z",
-      "to": "2026-02-08T08:35:01.552Z"
+      "from": "now-6h",
+      "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
