@@ -1419,16 +1419,21 @@
         },
         {
           "current": {
-            "text": "ConsensusNetMessage::Commit",
-            "value": "ConsensusNetMessage::Commit"
+            "text": "All",
+            "value": "$__all"
           },
-          "definition": "label_values(tcp_server_message_received_total,message_type)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values({__name__=~\"tcp_server_message_(received|emitted)_bytes\"}, message_type)",
           "includeAll": true,
+          "multi": true,
           "name": "message_type",
           "options": [],
           "query": {
-            "qryType": 1,
-            "query": "label_values(tcp_server_message_received_total,message_type)",
+            "qryType": 4,
+            "query": "label_values({__name__=~\"tcp_server_message_(received|emitted)_bytes\"}, message_type)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
@@ -1439,7 +1444,7 @@
       ]
     },
     "time": {
-      "from": "now-30m",
+      "from": "now-3h",
       "to": "now"
     },
     "timepicker": {},
