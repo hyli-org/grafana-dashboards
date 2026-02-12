@@ -712,7 +712,7 @@
             },
             "editorMode": "code",
             "expr": " sum by (message_type) (\n    rate(tcp_server_message_received_bytes_total{message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_received_total{message_type=~\"$message_type\"}[5m])\n  )",
-            "legendFormat": "rx {{server_name}}",
+            "legendFormat": "{{message_type}}",
             "range": true,
             "refId": "A"
           }
