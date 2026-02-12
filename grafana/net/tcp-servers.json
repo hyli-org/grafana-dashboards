@@ -1426,14 +1426,14 @@
             "type": "prometheus",
             "uid": "mimir"
           },
-          "definition": "label_values({__name__=~\"tcp_server_message_(received|emitted)_bytes\"}, message_type)",
+          "definition": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\"},message_type)",
           "includeAll": true,
           "multi": true,
           "name": "message_type",
           "options": [],
           "query": {
-            "qryType": 4,
-            "query": "label_values({__name__=~\"tcp_server_message_(received|emitted)_bytes\"}, message_type)",
+            "qryType": 1,
+            "query": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\"},message_type)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
