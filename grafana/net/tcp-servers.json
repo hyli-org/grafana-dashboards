@@ -1624,10 +1624,10 @@
         {
           "current": {
             "text": [
-              "ConsensusNetMessage::Commit"
+              "DataAvailabilityEvent::SignedBlock"
             ],
             "value": [
-              "ConsensusNetMessage::Commit"
+              "DataAvailabilityEvent::SignedBlock"
             ]
           },
           "datasource": {
