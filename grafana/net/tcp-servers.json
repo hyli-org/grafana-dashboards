@@ -814,7 +814,7 @@
             },
             "editorMode": "code",
             "expr": " sum by (message_type) (\n    rate(tcp_server_message_emitted_bytes_total{message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_emitted_total{message_type=~\"$message_type\"}[5m])\n  )",
-            "legendFormat": "rx {{server_name}}",
+            "legendFormat": "{{message_type}}",
             "range": true,
             "refId": "A"
           }
@@ -1624,10 +1624,10 @@
         {
           "current": {
             "text": [
-              "DataAvailabilityEvent::SignedBlock"
+              "All"
             ],
             "value": [
-              "DataAvailabilityEvent::SignedBlock"
+              "$__all"
             ]
           },
           "datasource": {
@@ -1652,7 +1652,7 @@
       ]
     },
     "time": {
-      "from": "now-3h",
+      "from": "now-24h",
       "to": "now"
     },
     "timepicker": {},
