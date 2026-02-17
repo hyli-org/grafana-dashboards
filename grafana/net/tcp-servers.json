@@ -442,7 +442,6 @@
           "type": "prometheus",
           "uid": "mimir"
         },
-        "description": "Message bytes rate",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -538,7 +537,7 @@
             "refId": "A"
           }
         ],
-        "title": "Message bytes",
+        "title": "Server Message bytes",
         "type": "timeseries"
       },
       {
