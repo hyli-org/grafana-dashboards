@@ -1118,7 +1118,7 @@
                 }
               ]
             },
-            "unit": "Bps"
+            "unit": "decbytes"
           },
           "overrides": []
         },
@@ -1128,7 +1128,7 @@
           "x": 7,
           "y": 51
         },
-        "id": 113,
+        "id": 114,
         "options": {
           "legend": {
             "calcs": [],
@@ -1150,13 +1150,13 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
-            "legendFormat": "{{server_name}}",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_bytes_total[$__rate_interval]))",
+            "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
             "refId": "A"
           }
         ],
-        "title": "Server Emitted Message bytes",
+        "title": "Client Received Message Bytes",
         "type": "timeseries"
       },
       {
