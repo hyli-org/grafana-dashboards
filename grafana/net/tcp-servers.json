@@ -538,7 +538,7 @@
             "refId": "A"
           }
         ],
-        "title": "Message bytes rx/tx",
+        "title": "Message bytes",
         "type": "timeseries"
       },
       {
