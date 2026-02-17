@@ -427,7 +427,7 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
+            "editorMode": "code",
             "expr": "sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
             "legendFormat": "{{server_name}}",
             "range": true,
@@ -530,7 +530,7 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
+            "editorMode": "code",
             "expr": "sum by(server_name) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
             "hide": true,
             "legendFormat": "{{server_name}}",
