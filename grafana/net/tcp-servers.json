@@ -536,7 +536,7 @@
             "refId": "A"
           }
         ],
-        "title": "Server Message bytes",
+        "title": "Server Received Message bytes",
         "type": "timeseries"
       },
       {
