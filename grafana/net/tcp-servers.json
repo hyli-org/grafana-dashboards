@@ -13,9 +13,9 @@
             "type": "loki",
             "uid": "loki"
           },
-          "enable": true,
+          "enable": false,
           "expr": "{service_name=\"kubernetes-event-exporter\"}\n| json\n| metadata_namespace=\"camelot\"\n| reason = \"Pulled\"",
-          "hide": true,
+          "hide": false,
           "iconColor": "rgba(0, 211, 255, 1)",
           "name": "Camelot Pulled",
           "queryType": "range",
