@@ -533,20 +533,9 @@
             "editorMode": "builder",
             "expr": "sum by(server_name) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
             "hide": true,
-            "legendFormat": "rx {{server_name}}",
+            "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "builder",
-            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
-            "legendFormat": "tx {{server_name}}",
-            "range": true,
-            "refId": "B"
           }
         ],
         "title": "Message bytes rx/tx",
