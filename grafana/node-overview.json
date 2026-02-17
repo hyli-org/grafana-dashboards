@@ -1292,7 +1292,7 @@
         "targets": [
           {
             "editorMode": "builder",
-            "expr": "histogram_quantile(0.5, sum by(le, otel_scope_name, branch, pod) (rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])))",
+            "expr": "histogram_quantile(0.5, sum by(le, client_id, branch, pod) (rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])))",
             "format": "time_series",
             "intervalFactor": 1,
             "legendFormat": "{{otel_scope_name}}/{{branch}} ({{pod}})",
