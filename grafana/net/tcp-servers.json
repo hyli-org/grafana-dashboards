@@ -103,7 +103,7 @@
           "minVizHeight": 16,
           "minVizWidth": 8,
           "namePlacement": "auto",
-          "orientation": "auto",
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
               "lastNotNull"
@@ -130,6 +130,7 @@
           }
         ],
         "title": "TCP peers (snapshot)",
+        "transparent": true,
         "type": "bargauge"
       },
       {
