@@ -233,6 +233,7 @@
           }
         ],
         "title": "Peer delta",
+        "transparent": true,
         "type": "timeseries"
       },
       {
@@ -308,6 +309,7 @@
           }
         ],
         "title": "Message throughput",
+        "transparent": true,
         "type": "stat"
       },
       {
