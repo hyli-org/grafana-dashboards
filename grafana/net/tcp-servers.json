@@ -894,7 +894,7 @@
               "spanNulls": false,
               "stacking": {
                 "group": "A",
-                "mode": "none"
+                "mode": "normal"
               },
               "thresholdsStyle": {
                 "mode": "off"
@@ -946,7 +946,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
+            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
             "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
