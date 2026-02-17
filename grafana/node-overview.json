@@ -1459,9 +1459,9 @@
         "targets": [
           {
             "editorMode": "builder",
-            "expr": "histogram_quantile(0.95, sum by(le, otel_scope_name, branch, pod, node_name) (rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])))",
+            "expr": "histogram_quantile(0.95, sum by(le, client_id, branch, pod, node_name) (rate(event_loop_latency_bucket{app=~\"$node\"}[$__rate_interval])))",
             "intervalFactor": 1,
-            "legendFormat": "p95 {{branch}} {{otel_scope_name}} ({{node_name}}",
+            "legendFormat": "p95 {{branch}} {{client_id}} ({{node_name}}",
             "range": true,
             "refId": "A"
           }
