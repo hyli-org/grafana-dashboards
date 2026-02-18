@@ -2640,9 +2640,16 @@
     "templating": {
       "list": [
         {
+          "allValue": ".+",
           "current": {
-            "text": "hyli-node",
-            "value": "hyli-node"
+            "text": [
+              "hyli-indexer",
+              "hyli-node"
+            ],
+            "value": [
+              "hyli-indexer",
+              "hyli-node"
+            ]
           },
           "datasource": {
             "type": "prometheus",
@@ -2651,6 +2658,7 @@
           "definition": "label_values(kube_pod_labels,app)",
           "includeAll": true,
           "label": "Node",
+          "multi": true,
           "name": "node",
           "options": [],
           "query": {
@@ -2698,7 +2706,7 @@
       ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
