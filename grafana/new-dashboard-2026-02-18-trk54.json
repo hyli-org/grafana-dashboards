@@ -10,35 +10,1163 @@
         {
           "builtIn": 1,
           "datasource": {
-            "type": "grafana",
             "uid": "-- Grafana --"
           },
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
           "name": "Annotations \u0026 Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
           "type": "dashboard"
         }
       ]
     },
+    "description": "Kubernetes Events Dashboard(Loki as DataSource)",
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
     "links": [],
-    "panels": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "bars",
+              "fillOpacity": 100,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=~\"$reason\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{involvedObject_namespace}}.{{involvedObject_name}}.{{type}}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Kubernetes Events Overview",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 1
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Warning"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 4,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason =~\"$reason\"\n    | type = \"Warning\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{involvedObject_namespace}}.{{involvedObject_name}}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Warning Events",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": "none",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "yellow",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 0,
+          "y": 8
+        },
+        "id": 6,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=\"ImagePullBackOff\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Image Pull Failed",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": "none",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 4,
+          "y": 8
+        },
+        "id": 12,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=\"BackOff\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{involvedObject_name}}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Container Crashed",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": "none",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 8,
+          "y": 8
+        },
+        "id": 10,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=\"OOMKilling\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{involvedObject_name}} ",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Container OOM Killed",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": "none",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 12,
+          "y": 8
+        },
+        "id": 14,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=\"Killing\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{involvedObject_name}}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Killing",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": "none",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 16,
+          "y": 8
+        },
+        "id": 16,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=\"FailedScheduling\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{involvedObject_name}}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Schedule Failed",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "noValue": "none",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "yellow",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 20,
+          "y": 8
+        },
+        "id": 18,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_namespace, type, involvedObject_name) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=\"Evicted\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Pod Evicted",
+        "type": "timeseries"
+      },
+      {
+        "gridPos": {
+          "h": 14,
+          "w": 12,
+          "x": 0,
+          "y": 14
+        },
+        "id": 26,
+        "libraryPanel": {
+          "name": "TOP 10  Kubernetes Events",
+          "uid": "nL8y67unz"
+        },
+        "title": "TOP 10  Kubernetes Events",
+        "type": "library-panel-ref"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 6,
+          "x": 12,
+          "y": 14
+        },
+        "id": 22,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "sort": "desc",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (involvedObject_kind, reason) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=~\"$reason\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{involvedObject_kind}}.{{reason}}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Reasons",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 6,
+          "x": 18,
+          "y": 14
+        },
+        "id": 20,
+        "interval": "1m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "pieType": "pie",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "sort": "desc",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "sum by (source_component) (\n  count_over_time(\n    {container=\"kubernetes-event-exporter\"}\n    | json\n    | involvedObject_namespace=~\"$namespace\"\n    | involvedObject_name=~\"$pod\"\n    | reason=~\"$reason\"\n    | __error__=\"\"\n    [$__interval]\n  )\n)\n",
+            "legendFormat": "{{source_component}}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Kubernetes Events Source",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 19,
+          "w": 24,
+          "x": 0,
+          "y": 28
+        },
+        "id": 8,
+        "options": {
+          "dedupStrategy": "none",
+          "enableInfiniteScrolling": false,
+          "enableLogDetails": true,
+          "prettifyLogMessage": false,
+          "showCommonLabels": false,
+          "showControls": false,
+          "showLabels": false,
+          "showTime": true,
+          "sortOrder": "Descending",
+          "wrapLogMessage": true
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "loki"
+            },
+            "direction": "backward",
+            "editorMode": "code",
+            "expr": "{service_name=\"kubernetes-event-exporter\"}\n| json\n | involvedObject_namespace=~\"$namespace\"\n | involvedObject_name=~\"$pod\"\n | reason=~\"$reason\"\n| label_format level=\"{{ if or (eq .reason \\\"OOMKilling\\\") (eq .reason \\\"Killing\\\") (eq .reason \\\"Evicted\\\") (eq .reason \\\"Failed\\\")}}error{{ else if or (eq .reason \\\"BackOff\\\")  (eq .reason \\\"Unhealthy\\\")  (eq .reason \\\"VolumeFailedDelete\\\") (eq .reason \\\"FailedMount\\\")}}warn{{ else }}info{{ end }}\"\n| line_format \"{{ if eq .level \\\"error\\\" }}💥{{ else if eq .level \\\"warn\\\" }}⚠️{{ else }}ℹ️{{ end }} {{ .reason }} • {{ .involvedObject_namespace }}/{{ .involvedObject_name }} • x{{ .count }} — {{ .message }}\"\n",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Kubernetes Live Events",
+        "type": "logs"
+      }
+    ],
     "preload": false,
+    "refresh": "1m",
     "schemaVersion": 42,
-    "tags": [],
+    "tags": [
+      "Loki",
+      "logging"
+    ],
     "templating": {
-      "list": []
+      "list": [
+        {
+          "baseFilters": [],
+          "datasource": {
+            "type": "loki",
+            "uid": "loki"
+          },
+          "filters": [],
+          "name": "Filters",
+          "type": "adhoc"
+        },
+        {
+          "current": {
+            "text": [
+              "camelot"
+            ],
+            "value": [
+              "camelot"
+            ]
+          },
+          "datasource": {
+            "type": "loki",
+            "uid": "loki"
+          },
+          "definition": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "namespace",
+          "options": [],
+          "query": {
+            "label": "namespace",
+            "refId": "LokiVariableQueryEditor-VariableQuery",
+            "stream": "",
+            "type": 1
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "loki",
+            "uid": "loki"
+          },
+          "definition": "",
+          "includeAll": true,
+          "multi": true,
+          "name": "pod",
+          "options": [],
+          "query": {
+            "label": "pod",
+            "refId": "LokiVariableQueryEditor-VariableQuery",
+            "stream": "{namespace=~\"$namespace\"}",
+            "type": 1
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "$__all"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "includeAll": true,
+          "multi": true,
+          "name": "reason",
+          "options": [],
+          "query": "OOMKilled,\nBackOff,\nCrashLoopBackOff,\nFailed,\nKilling,\nEvicted,\nUnhealthy,\nFailedScheduling,\nFailedMount,\nImagePullBackOff,\nErrImagePull,\nCreated,\nStarted,\nPulled,\nScalingReplicaSet,\nSuccessfulCreate,\nSuccessfulDelete,\nNodeNotReady,\nNodeReady",
+          "type": "custom",
+          "valuesFormat": "csv"
+        }
+      ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-12h",
       "to": "now"
     },
-    "timepicker": {},
+    "timepicker": {
+      "refresh_intervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
     "timezone": "browser",
-    "title": "New dashboard",
+    "title": "Kubernetes Events Dashboard",
     "weekStart": ""
   }
 }
