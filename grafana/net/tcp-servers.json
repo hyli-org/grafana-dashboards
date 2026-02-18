@@ -324,7 +324,7 @@
         "type": "stat"
       },
       {
-        "collapsed": false,
+        "collapsed": true,
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -332,1282 +332,12 @@
           "y": 13
         },
         "id": 102,
-        "panels": [],
-        "title": "Traffic Inbound (Server \u003c- Client)",
-        "type": "row"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 0,
-          "y": 14
-        },
-        "id": 4,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
-            "legendFormat": "{{server_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Server Received Messages",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "Bps"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 7,
-          "y": 14
-        },
-        "id": 5,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
-            "legendFormat": "{{server_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Server Received Message bytes",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "Bps"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 14,
-          "y": 14
-        },
-        "id": 106,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": " sum by (message_type) (\n    rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\",message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )",
-            "legendFormat": "{{message_type}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Received avg size",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "normal"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 0,
-          "y": 26
-        },
-        "id": 112,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_total[$__rate_interval]))",
-            "legendFormat": "{{client_name}}.{{pod}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Client Emitted Messages",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "normal"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 7,
-          "y": 26
-        },
-        "id": 114,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_bytes_total[$__rate_interval]))",
-            "legendFormat": "{{client_name}}.{{pod}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Client Emitted Message Bytes",
-        "type": "timeseries"
-      },
-      {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 38
-        },
-        "id": 109,
-        "panels": [],
-        "title": "Traffic Outbound (Server -\u003e Client)",
-        "type": "row"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 0,
-          "y": 39
-        },
-        "id": 110,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
-            "legendFormat": "{{server_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Server Emitted Messages",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "normal"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "Bps"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 7,
-          "y": 39
-        },
-        "id": 111,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
-            "legendFormat": "{{server_name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Server Emitted Message bytes",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "Bps"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 14,
-          "y": 39
-        },
-        "id": 117,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": " sum by (message_type) (\n    rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )",
-            "legendFormat": "{{message_type}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Emitted avg size",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "normal"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 0,
-          "y": 51
-        },
-        "id": 115,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_total[$__rate_interval]))",
-            "legendFormat": "{{client_name}}.{{pod}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Client Received Messages",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "mimir"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "normal"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 7,
-          "x": 7,
-          "y": 51
-        },
-        "id": 116,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.4.0-21419697389",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_bytes_total[$__rate_interval]))",
-            "legendFormat": "{{client_name}}.{{pod}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Client Received Message Bytes",
-        "type": "timeseries"
-      },
-      {
-        "collapsed": true,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 63
-        },
-        "id": 103,
         "panels": [
           {
             "datasource": {
               "type": "prometheus",
               "uid": "mimir"
             },
-            "description": "Errors / total message events",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "decimals": 2,
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 90
-                    },
-                    {
-                      "color": "green",
-                      "value": 98
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 12,
-              "w": 7,
-              "x": 0,
-              "y": 64
-            },
-            "id": 7,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "percentChangeColorMode": "standard",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "12.4.0-21419697389",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
-                "legendFormat": "{{server_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Message error rate",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "description": "Closed / total message events",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "decimals": 2,
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 90
-                    },
-                    {
-                      "color": "green",
-                      "value": 98
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 12,
-              "w": 7,
-              "x": 7,
-              "y": 64
-            },
-            "id": 8,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "percentChangeColorMode": "standard",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "12.4.0-21419697389",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
-                "legendFormat": "{{server_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Message close rate",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "description": "Send errors / emitted messages",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "decimals": 2,
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 90
-                    },
-                    {
-                      "color": "green",
-                      "value": 98
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 12,
-              "w": 7,
-              "x": 14,
-              "y": 64
-            },
-            "id": 9,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "percentChangeColorMode": "standard",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "12.4.0-21419697389",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "builder",
-                "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
-                "legendFormat": "{{server_name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Send error rate",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "mimir"
-            },
-            "description": "Error and closed message rates",
             "fieldConfig": {
               "defaults": {
                 "color": {
@@ -1622,7 +352,312 @@
                   "barAlignment": 0,
                   "barWidthFactor": 0.6,
                   "drawStyle": "line",
-                  "fillOpacity": 10,
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 0,
+              "y": 14
+            },
+            "id": 4,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": "sum by(server_name) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
+                "legendFormat": "{{server_name}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Server Received Messages",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "Bps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 7,
+              "y": 14
+            },
+            "id": 5,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": "sum by(server_name) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
+                "legendFormat": "{{server_name}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Server Received Message bytes",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "Bps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 14,
+              "y": 14
+            },
+            "id": 106,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": " sum by (message_type) (\n    rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\",message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )",
+                "legendFormat": "{{message_type}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Received avg size",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
                   "gradientMode": "none",
                   "hideFrom": {
                     "legend": false,
@@ -1663,7 +698,8 @@
                       "value": 80
                     }
                   ]
-                }
+                },
+                "unit": "decbytes"
               },
               "overrides": []
             },
@@ -1671,9 +707,9 @@
               "h": 12,
               "w": 7,
               "x": 0,
-              "y": 76
+              "y": 50
             },
-            "id": 10,
+            "id": 112,
             "options": {
               "legend": {
                 "calcs": [],
@@ -1695,39 +731,119 @@
                   "uid": "mimir"
                 },
                 "editorMode": "code",
-                "expr": "sum by(server_name) (rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
-                "legendFormat": "error {{server_name}}",
+                "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_total[$__rate_interval]))",
+                "legendFormat": "{{client_name}}.{{pod}}",
                 "range": true,
                 "refId": "A"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval]))",
-                "legendFormat": "closed {{server_name}}",
-                "range": true,
-                "refId": "B"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "mimir"
-                },
-                "editorMode": "code",
-                "expr": "sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
-                "legendFormat": "send_error {{server_name}}",
-                "range": true,
-                "refId": "C"
               }
             ],
-            "title": "Errors vs closed",
+            "title": "Client Emitted Messages",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "decbytes"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 7,
+              "y": 50
+            },
+            "id": 114,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_bytes_total[$__rate_interval]))",
+                "legendFormat": "{{client_name}}.{{pod}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Client Emitted Message Bytes",
             "type": "timeseries"
           }
         ],
-        "title": "Errors",
+        "title": "Traffic Inbound (Server \u003c- Client)",
         "type": "row"
       },
       {
@@ -1736,7 +852,892 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 64
+          "y": 14
+        },
+        "id": 109,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 0,
+              "y": 15
+            },
+            "id": 110,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": "sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
+                "legendFormat": "{{server_name}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Server Emitted Messages",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "Bps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 7,
+              "y": 15
+            },
+            "id": 111,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": "sum by(server_name) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
+                "legendFormat": "{{server_name}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Server Emitted Message bytes",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "Bps"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 14,
+              "y": 15
+            },
+            "id": 117,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": " sum by (message_type) (\n    rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )",
+                "legendFormat": "{{message_type}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Emitted avg size",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "decbytes"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 0,
+              "y": 51
+            },
+            "id": 115,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_total[$__rate_interval]))",
+                "legendFormat": "{{client_name}}.{{pod}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Client Received Messages",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                    "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "decbytes"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 7,
+              "x": 7,
+              "y": 51
+            },
+            "id": 116,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.4.0-21419697389",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "mimir"
+                },
+                "editorMode": "code",
+                "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_bytes_total[$__rate_interval]))",
+                "legendFormat": "{{client_name}}.{{pod}}",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Client Received Message Bytes",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Traffic Outbound (Server -\u003e Client)",
+        "type": "row"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 103,
+        "panels": [],
+        "title": "Errors",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Errors / total message events",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 0,
+          "y": 16
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
+            "legendFormat": "{{server_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Message error rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Closed / total message events",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 7,
+          "y": 16
+        },
+        "id": 8,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
+            "legendFormat": "{{server_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Message close rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Send errors / emitted messages",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 14,
+          "y": 16
+        },
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "builder",
+            "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
+            "legendFormat": "{{server_name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Send error rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "description": "Error and closed message rates",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 0,
+          "y": 28
+        },
+        "id": 10,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "sum by(server_name) (rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "legendFormat": "error {{server_name}}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "legendFormat": "closed {{server_name}}",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "code",
+            "expr": "sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "legendFormat": "send_error {{server_name}}",
+            "range": true,
+            "refId": "C"
+          }
+        ],
+        "title": "Errors vs closed",
+        "type": "timeseries"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 40
         },
         "id": 104,
         "panels": [
@@ -1810,7 +1811,7 @@
               "h": 12,
               "w": 7,
               "x": 0,
-              "y": 89
+              "y": 113
             },
             "id": 11,
             "options": {
@@ -1892,7 +1893,7 @@
               "h": 12,
               "w": 7,
               "x": 7,
-              "y": 89
+              "y": 113
             },
             "id": 12,
             "options": {
@@ -1995,7 +1996,7 @@
               "h": 12,
               "w": 7,
               "x": 14,
-              "y": 89
+              "y": 113
             },
             "id": 13,
             "options": {
@@ -2041,11 +2042,9 @@
       "list": [
         {
           "current": {
-            "text": [
-              "DAServer-gauvain"
-            ],
+            "text": "All",
             "value": [
-              "DAServer-gauvain"
+              "$__all"
             ]
           },
           "datasource": {
