@@ -1090,7 +1090,10 @@
         "type": "row"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1177,12 +1180,14 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "pg_stat_activity_count{app=\"$app\", datname=\"$db\"}",
+            "expr": "pg_stat_activity_count{app=~\"$app\", datname=~\"$db\", pod=~\"$pod\", container=\"postgres-exporter\"}",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "{{state}}",
+            "range": true,
             "refId": "A"
           }
         ],
