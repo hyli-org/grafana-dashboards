@@ -2282,6 +2282,28 @@
           "regex": "",
           "regexApplyTo": "value",
           "type": "query"
+        },
+        {
+          "current": {
+            "text": "hyli-indexer-arthur-0",
+            "value": "hyli-indexer-arthur-0"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values(pg_database_size_bytes,pod)",
+          "name": "pod",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(pg_database_size_bytes,pod)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
         }
       ]
     },
