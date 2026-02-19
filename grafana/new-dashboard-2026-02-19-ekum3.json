@@ -1424,7 +1424,10 @@
         "type": "timeseries"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1511,32 +1514,38 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_tup_inserted{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_tup_inserted{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "INSERT",
+            "range": true,
             "refId": "A"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_tup_updated{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_tup_updated{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "UPDATE",
+            "range": true,
             "refId": "B"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_tup_deleted{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_tup_deleted{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "DELETE",
+            "range": true,
             "refId": "C"
           }
         ],
@@ -2388,7 +2397,7 @@
       ]
     },
     "time": {
-      "from": "now-15m",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
