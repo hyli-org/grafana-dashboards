@@ -976,7 +976,10 @@
         "type": "row"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1063,9 +1066,9 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
-            "editorMode": "code",
-            "expr": "pg_database_size_bytes{app=\"$app\", datname=\"$db\"}",
-            "legendFormat": "size",
+            "editorMode": "builder",
+            "expr": "pg_database_size_bytes{app=~\"$app\", datname=~\"$db\"}",
+            "legendFormat": "{{app}}.{{datname}}",
             "range": true,
             "refId": "A"
           }
