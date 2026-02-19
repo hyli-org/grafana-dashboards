@@ -2042,20 +2042,22 @@
         {
           "current": {
             "text": "All",
-            "value": "$__all"
+            "value": [
+              "$__all"
+            ]
           },
           "datasource": {
             "type": "prometheus",
             "uid": "mimir"
           },
-          "definition": "label_values(tcp_server_peers{pod=~\"$pod\", message_type=~\"$message_type\"},server_name)",
+          "definition": "label_values(tcp_server_peers{pod=~\"$pod\"},server_name)",
           "includeAll": true,
           "multi": true,
           "name": "server_name",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values(tcp_server_peers{pod=~\"$pod\", message_type=~\"$message_type\"},server_name)",
+            "query": "label_values(tcp_server_peers{pod=~\"$pod\"},server_name)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 2,
@@ -2094,10 +2096,10 @@
         {
           "current": {
             "text": [
-              "All"
+              "DataAvailabilityEvent::MempoolStatusEvent"
             ],
             "value": [
-              "$__all"
+              "DataAvailabilityEvent::MempoolStatusEvent"
             ]
           },
           "datasource": {
