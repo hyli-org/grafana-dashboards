@@ -1772,7 +1772,10 @@
         "type": "row"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1859,52 +1862,62 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_bgwriter_buffers_backend_total{app=\"$app\"}[5m])",
+            "expr": "irate(pg_stat_bgwriter_buffers_backend_total{app=~\"$app\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "buffers_backend",
+            "range": true,
             "refId": "A"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_bgwriter_buffers_alloc_total{app=\"$app\"}[5m])",
+            "expr": "irate(pg_stat_bgwriter_buffers_alloc_total{app=~\"$app\", pod=~\"$pod\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "buffers_alloc",
+            "range": true,
             "refId": "B"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync_total{app=\"$app\"}[5m])",
+            "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync_total{app=~\"$app\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "backend_fsync",
+            "range": true,
             "refId": "C"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_bgwriter_buffers_checkpoint_total{app=\"$app\"}[5m])",
+            "expr": "irate(pg_stat_bgwriter_buffers_checkpoint_total{app=~\"$app\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "buffers_checkpoint",
+            "range": true,
             "refId": "D"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_bgwriter_buffers_clean_total{app=\"$app\"}[5m])",
+            "expr": "irate(pg_stat_bgwriter_buffers_clean_total{app=~\"$app\", pod=~\"$pod\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "buffers_clean",
+            "range": true,
             "refId": "E"
           }
         ],
