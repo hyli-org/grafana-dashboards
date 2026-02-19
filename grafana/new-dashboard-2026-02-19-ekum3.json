@@ -1067,8 +1067,8 @@
           {
             "datasource": "${DS_PROMETHEUS}",
             "editorMode": "builder",
-            "expr": "pg_database_size_bytes{app=~\"$app\", datname=~\"$db\"}",
-            "legendFormat": "{{app}}.{{datname}}",
+            "expr": "pg_database_size_bytes{app=~\"$app\", datname=~\"$db\", pod=~\"$pod\", container=\"postgres-exporter\"}",
+            "legendFormat": "{{pod}}.{{datname}}",
             "range": true,
             "refId": "A"
           }
@@ -2285,8 +2285,8 @@
         },
         {
           "current": {
-            "text": "hyli-indexer-arthur-0",
-            "value": "hyli-indexer-arthur-0"
+            "text": "hyli-indexer-merlin-0",
+            "value": "hyli-indexer-merlin-0"
           },
           "datasource": {
             "type": "prometheus",
@@ -2308,7 +2308,7 @@
       ]
     },
     "time": {
-      "from": "now-15m",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {},
