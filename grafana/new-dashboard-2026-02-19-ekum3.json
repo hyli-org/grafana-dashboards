@@ -1195,7 +1195,10 @@
         "type": "timeseries"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1277,12 +1280,14 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_xact_commit{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_xact_commit{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "commits",
+            "range": true,
             "refId": "A"
           },
           {
