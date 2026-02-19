@@ -1658,7 +1658,10 @@
         "type": "timeseries"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1741,12 +1744,14 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "code",
             "exemplar": true,
-            "expr": "pg_stat_database_blks_hit{app=\"$app\", datname=\"$db\"} / (pg_stat_database_blks_read{app=\"$app\", datname=\"$db\"} + pg_stat_database_blks_hit{app=\"$app\", datname=\"$db\"})",
+            "expr": "pg_stat_database_blks_hit{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"} / (pg_stat_database_blks_read{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"} + pg_stat_database_blks_hit{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"})",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "Cache Hit Rate",
+            "range": true,
             "refId": "A"
           }
         ],
