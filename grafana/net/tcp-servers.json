@@ -134,8 +134,8 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (tcp_server_peers{server_name=~\"$server_name\"})",
-            "legendFormat": "{{server_name}}",
+            "expr": "sum by(server_name, pod) (tcp_server_peers{server_name=~\"$server_name\"})",
+            "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
             "refId": "A"
           }
