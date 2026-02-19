@@ -60,7 +60,10 @@
         "type": "row"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -110,7 +113,7 @@
           "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
-              "mean"
+              "lastNotNull"
             ],
             "fields": "",
             "values": false
@@ -124,12 +127,14 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "pg_static{app=\"$app\"}",
+            "expr": "last_over_time(pg_static{app=~\"$app\"}[$__interval])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "{{short_version}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -2204,8 +2209,8 @@
         },
         {
           "current": {
-            "text": "hyli-indexer",
-            "value": "hyli-indexer"
+            "text": "postgres",
+            "value": "postgres"
           },
           "datasource": {
             "type": "prometheus",
@@ -2228,7 +2233,7 @@
       ]
     },
     "time": {
-      "from": "now-24h",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
