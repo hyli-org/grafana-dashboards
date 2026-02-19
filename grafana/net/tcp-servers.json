@@ -734,7 +734,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_total{message_type=~\"$message_type\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
             "refId": "A"
@@ -836,7 +836,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_bytes_total{message_type=~\"$message_type\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_bytes_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
             "refId": "A"
@@ -1256,7 +1256,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_total{message_type=~\"$message_type\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
             "refId": "A"
@@ -1358,7 +1358,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_bytes_total{message_type=~\"$message_type\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_bytes_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
             "refId": "A"
@@ -2068,6 +2068,34 @@
         },
         {
           "current": {
+            "text": [
+              "signed_da_listener"
+            ],
+            "value": [
+              "signed_da_listener"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values({__name__=\"tcp_client_message_emitted_total\"},client_name)",
+          "includeAll": true,
+          "multi": true,
+          "name": "client_name",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values({__name__=\"tcp_client_message_emitted_total\"},client_name)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 2,
+          "regexApplyTo": "value",
+          "sort": 1,
+          "type": "query"
+        },
+        {
+          "current": {
             "text": "All",
             "value": [
               "$__all"
@@ -2095,10 +2123,10 @@
         {
           "current": {
             "text": [
-              "DataAvailabilityEvent::SignedBlock"
+              "All"
             ],
             "value": [
-              "DataAvailabilityEvent::SignedBlock"
+              "$__all"
             ]
           },
           "datasource": {
