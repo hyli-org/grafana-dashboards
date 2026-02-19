@@ -1292,12 +1292,14 @@
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_xact_rollback{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_xact_rollback{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "rollbacks",
+            "range": true,
             "refId": "B"
           }
         ],
@@ -1305,7 +1307,10 @@
         "type": "timeseries"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1392,22 +1397,26 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_tup_fetched{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_tup_fetched{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "SELECT (index scan)",
+            "range": true,
             "refId": "A"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_tup_returned{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_tup_returned{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "SELECT (table scan)",
+            "range": true,
             "refId": "B"
           }
         ],
@@ -2379,7 +2388,7 @@
       ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
