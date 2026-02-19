@@ -2063,32 +2063,6 @@
         },
         {
           "current": {
-            "text": "All",
-            "value": [
-              "$__all"
-            ]
-          },
-          "datasource": {
-            "type": "prometheus",
-            "uid": "mimir"
-          },
-          "definition": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\"},message_type)",
-          "includeAll": true,
-          "multi": true,
-          "name": "message_type",
-          "options": [],
-          "query": {
-            "qryType": 1,
-            "query": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\"},message_type)",
-            "refId": "PrometheusVariableQueryEditor-VariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "regexApplyTo": "value",
-          "type": "query"
-        },
-        {
-          "current": {
             "text": "hyli-node-arthur-0",
             "value": "hyli-node-arthur-0"
           },
@@ -2102,6 +2076,32 @@
           "query": {
             "qryType": 1,
             "query": "label_values({server_name=~\"$server_name\"},pod)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\", pod=~\"$pod\"},message_type)",
+          "includeAll": true,
+          "multi": true,
+          "name": "message_type",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\", pod=~\"$pod\"},message_type)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
