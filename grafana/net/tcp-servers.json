@@ -2050,14 +2050,14 @@
             "type": "prometheus",
             "uid": "mimir"
           },
-          "definition": "label_values(tcp_server_peers{pod=~\"$pod\"},server_name)",
+          "definition": "label_values(tcp_server_peers,server_name)",
           "includeAll": true,
           "multi": true,
           "name": "server_name",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values(tcp_server_peers{pod=~\"$pod\"},server_name)",
+            "query": "label_values(tcp_server_peers,server_name)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 2,
@@ -2067,11 +2067,9 @@
         },
         {
           "current": {
-            "text": [
-              "hyli-node-arthur-0"
-            ],
+            "text": "All",
             "value": [
-              "hyli-node-arthur-0"
+              "$__all"
             ]
           },
           "datasource": {
@@ -2124,7 +2122,7 @@
       ]
     },
     "time": {
-      "from": "now-15m",
+      "from": "now-3h",
       "to": "now"
     },
     "timepicker": {},
