@@ -2063,17 +2063,6 @@
         },
         {
           "current": {
-            "text": "10",
-            "value": "10"
-          },
-          "name": "topk",
-          "options": [],
-          "query": "5,10,20",
-          "type": "custom",
-          "valuesFormat": "csv"
-        },
-        {
-          "current": {
             "text": "All",
             "value": [
               "$__all"
@@ -2097,11 +2086,33 @@
           "regex": "",
           "regexApplyTo": "value",
           "type": "query"
+        },
+        {
+          "current": {
+            "text": "hyli-node-arthur-0",
+            "value": "hyli-node-arthur-0"
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values({server_name=~\"$server_name\"},pod)",
+          "name": "pod",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values({server_name=~\"$server_name\"},pod)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
         }
       ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
