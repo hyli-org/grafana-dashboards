@@ -2180,8 +2180,8 @@
       "list": [
         {
           "current": {
-            "text": "cachecash-server",
-            "value": "cachecash-server"
+            "text": "hyli-indexer",
+            "value": "hyli-indexer"
           },
           "datasource": {
             "type": "prometheus",
@@ -2204,17 +2204,21 @@
         },
         {
           "current": {
-            "text": "",
-            "value": ""
+            "text": "hyli-indexer",
+            "value": "hyli-indexer"
           },
-          "definition": "label_values(pg_stat_database_tup_fetched{datname!~\"template.*|postgres\",app=\"$app\"},datname)",
-          "includeAll": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values({app=\"$app\"},datname)",
           "label": "Database",
           "name": "db",
           "options": [],
           "query": {
-            "query": "label_values(pg_stat_database_tup_fetched{datname!~\"template.*|postgres\",app=\"$app\"},datname)",
-            "refId": "StandardVariableQuery"
+            "qryType": 1,
+            "query": "label_values({app=\"$app\"},datname)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
           "regex": "",
