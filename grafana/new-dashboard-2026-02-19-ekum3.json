@@ -845,20 +845,19 @@
         "id": 64,
         "maxDataPoints": 100,
         "options": {
-          "colorMode": "none",
-          "graphMode": "none",
+          "colorMode": "value",
+          "graphMode": "area",
           "justifyMode": "auto",
-          "orientation": "horizontal",
+          "orientation": "auto",
           "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
-              "mean"
+              "lastNotNull"
             ],
             "fields": "",
             "values": false
           },
           "showPercentChange": false,
-          "text": {},
           "textMode": "auto",
           "wideLayout": true
         },
@@ -868,7 +867,7 @@
             "datasource": "${DS_PROMETHEUS}",
             "editorMode": "builder",
             "exemplar": true,
-            "expr": "avg by(app) (pg_settings_max_worker_processes{app=~\"$app\"})",
+            "expr": "avg by(app) (pg_settings_max_worker_processes{app=~\"$app\", container=\"postgres-exporter\"})",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
@@ -2037,7 +2036,10 @@
         "type": "timeseries"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -2125,12 +2127,14 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "pg_locks_count{app=\"$app\", datname=\"$db\"}",
+            "expr": "pg_locks_count{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "{{mode}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -2138,7 +2142,10 @@
         "type": "timeseries"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "description": "Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
         "fieldConfig": {
           "defaults": {
@@ -2221,12 +2228,14 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_database_temp_bytes{app=\"$app\", datname=\"$db\"}[5m])",
+            "expr": "irate(pg_stat_database_temp_bytes{app=~\"$app\", datname=~\"$db\", container=\"postgres-exporter\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "Temp Bytes",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -2234,7 +2243,10 @@
         "type": "timeseries"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -2321,22 +2333,26 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_bgwriter_checkpoint_write_time_total{app=\"$app\"}[5m])",
+            "expr": "irate(pg_stat_bgwriter_checkpoint_write_time_total{app=~\"$app\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "write_time - Total amount of time that has been spent in the portion of checkpoint processing where files are written to disk.",
+            "range": true,
             "refId": "B"
           },
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time_total{app=\"$app\"}[5m])",
+            "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time_total{app=~\"$app\"}[5m])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
             "legendFormat": "sync_time - Total amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk.",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -2422,7 +2438,7 @@
       ]
     },
     "time": {
-      "from": "now-30m",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {},
