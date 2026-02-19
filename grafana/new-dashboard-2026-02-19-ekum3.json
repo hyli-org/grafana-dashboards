@@ -142,7 +142,10 @@
         "type": "stat"
       },
       {
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -206,12 +209,14 @@
         "targets": [
           {
             "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "builder",
             "exemplar": true,
-            "expr": "pg_settings_max_connections{app=\"$app\"}",
+            "expr": "avg by(app) (pg_settings_max_connections{app=~\"$app\"})",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
-            "legendFormat": "",
+            "legendFormat": "{{app}}",
+            "range": true,
             "refId": "A"
           }
         ],
