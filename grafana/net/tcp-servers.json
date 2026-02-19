@@ -530,8 +530,8 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
-            "legendFormat": "{{server_name}}",
+            "expr": "sum by(server_name, pod) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\"}[$__rate_interval]))",
+            "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
             "refId": "A"
           }
@@ -2041,9 +2041,11 @@
       "list": [
         {
           "current": {
-            "text": "All",
+            "text": [
+              "Da"
+            ],
             "value": [
-              "$__all"
+              "Da"
             ]
           },
           "datasource": {
@@ -2093,12 +2095,8 @@
         },
         {
           "current": {
-            "text": [
-              "DataAvailabilityEvent::MempoolStatusEvent"
-            ],
-            "value": [
-              "DataAvailabilityEvent::MempoolStatusEvent"
-            ]
+            "text": "All",
+            "value": "$__all"
           },
           "datasource": {
             "type": "prometheus",
@@ -2122,7 +2120,7 @@
       ]
     },
     "time": {
-      "from": "now-3h",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
