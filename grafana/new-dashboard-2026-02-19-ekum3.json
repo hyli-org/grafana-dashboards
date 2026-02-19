@@ -129,7 +129,7 @@
             "datasource": "${DS_PROMETHEUS}",
             "editorMode": "builder",
             "exemplar": true,
-            "expr": "last_over_time(pg_static{app=~\"$app\"}[$__interval])",
+            "expr": "last_over_time(pg_static{app=~\"$app\", container=\"postgres-exporter\"}[$__interval])",
             "format": "time_series",
             "interval": "",
             "intervalFactor": 1,
