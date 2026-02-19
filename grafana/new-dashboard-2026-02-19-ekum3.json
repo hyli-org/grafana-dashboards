@@ -5,10 +5,46 @@
     "name": "dffdq3jru0s1s0e"
   },
   "spec": {
+    "__elements": {},
+    "__inputs": [
+      {
+        "description": "",
+        "label": "Prometheus",
+        "name": "DS_PROMETHEUS",
+        "pluginId": "prometheus",
+        "pluginName": "Prometheus",
+        "type": "datasource"
+      }
+    ],
+    "__requires": [
+      {
+        "id": "grafana",
+        "name": "Grafana",
+        "type": "grafana",
+        "version": "9.0.5"
+      },
+      {
+        "id": "prometheus",
+        "name": "Prometheus",
+        "type": "datasource",
+        "version": "1.0.0"
+      },
+      {
+        "id": "stat",
+        "name": "Stat",
+        "type": "panel",
+        "version": ""
+      },
+      {
+        "id": "timeseries",
+        "name": "Time series",
+        "type": "panel",
+        "version": ""
+      }
+    ],
     "annotations": {
       "list": [
         {
-          "$$hashKey": "object:602",
           "builtIn": 1,
           "datasource": {
             "type": "datasource",
@@ -25,198 +61,49 @@
             "type": "dashboard"
           },
           "type": "dashboard"
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "filter": {
-            "exclude": false,
-            "ids": [
-              2
-            ]
-          },
-          "hide": true,
-          "iconColor": "gray",
-          "name": "T1",
-          "target": {
-            "queryType": "timeRegions",
-            "refId": "Anno",
-            "timeRegion": {
-              "fromDayOfWeek": 6,
-              "timezone": "utc",
-              "toDayOfWeek": 7
-            }
-          }
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "filter": {
-            "exclude": false,
-            "ids": [
-              49
-            ]
-          },
-          "hide": true,
-          "iconColor": "gray",
-          "name": "T1",
-          "target": {
-            "queryType": "timeRegions",
-            "refId": "Anno",
-            "timeRegion": {
-              "fromDayOfWeek": 6,
-              "timezone": "utc",
-              "toDayOfWeek": 7
-            }
-          }
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "filter": {
-            "exclude": false,
-            "ids": [
-              8
-            ]
-          },
-          "hide": true,
-          "iconColor": "gray",
-          "name": "T1",
-          "target": {
-            "queryType": "timeRegions",
-            "refId": "Anno",
-            "timeRegion": {
-              "fromDayOfWeek": 6,
-              "timezone": "utc",
-              "toDayOfWeek": 7
-            }
-          }
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "filter": {
-            "exclude": false,
-            "ids": [
-              6
-            ]
-          },
-          "hide": true,
-          "iconColor": "gray",
-          "name": "T1",
-          "target": {
-            "queryType": "timeRegions",
-            "refId": "Anno",
-            "timeRegion": {
-              "fromDayOfWeek": 6,
-              "timezone": "utc",
-              "toDayOfWeek": 7
-            }
-          }
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "filter": {
-            "exclude": false,
-            "ids": [
-              4
-            ]
-          },
-          "hide": true,
-          "iconColor": "gray",
-          "name": "T1",
-          "target": {
-            "queryType": "timeRegions",
-            "refId": "Anno",
-            "timeRegion": {
-              "fromDayOfWeek": 6,
-              "timezone": "utc",
-              "toDayOfWeek": 7
-            }
-          }
         }
       ]
     },
-    "description": "My PostgreSQL simple dashboard",
+    "description": "Dashboard for PostgreSQL Statistics.",
     "editable": true,
     "fiscalYearStartMonth": 0,
-    "gnetId": 11056,
-    "graphTooltip": 1,
-    "links": [
-      {
-        "$$hashKey": "object:177",
-        "asDropdown": false,
-        "icon": "external link",
-        "includeVars": true,
-        "tags": [
-          "MyPg"
-        ],
-        "title": "Pg Tools",
-        "type": "dashboards"
-      },
-      {
-        "$$hashKey": "object:178",
-        "icon": "external link",
-        "includeVars": false,
-        "tags": [],
-        "targetBlank": true,
-        "title": "Collector",
-        "type": "link",
-        "url": "https://www.meo.bogliolo.name/pub/pgstatspack-2.3.4.zip"
-      }
-    ],
+    "gnetId": 13494,
+    "graphTooltip": 0,
+    "links": [],
+    "liveNow": false,
     "panels": [
       {
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
+        "collapsed": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
         },
         "gridPos": {
-          "h": 2,
-          "w": 20,
+          "h": 1,
+          "w": 24,
           "x": 0,
           "y": 0
         },
-        "id": 32,
-        "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "\u003cdiv style=\"text-align: center;\"\u003e${MyInstance:text} -- \u003cb\u003e$MyVar\u003c/b\u003e\u003c/div\u003e",
-          "mode": "html"
-        },
-        "pluginVersion": "12.2.0",
-        "title": "Connection Info",
-        "transparent": true,
-        "type": "text"
+        "id": 34,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "prometheus"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Settings",
+        "type": "row"
       },
       {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
+        "datasource": "${DS_PROMETHEUS}",
         "fieldConfig": {
           "defaults": {
             "color": {
-              "fixedColor": "rgb(31, 120, 193)",
-              "mode": "fixed"
+              "mode": "thresholds"
             },
             "mappings": [
               {
@@ -234,7 +121,7 @@
               "steps": [
                 {
                   "color": "green",
-                  "value": 0
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -242,24 +129,174 @@
                 }
               ]
             },
-            "unit": "ops"
+            "unit": "none"
           },
           "overrides": []
         },
         "gridPos": {
-          "h": 2,
-          "w": 4,
-          "x": 20,
-          "y": 0
+          "h": 3,
+          "w": 3,
+          "x": 0,
+          "y": 1
         },
-        "id": 20,
+        "id": 2,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "name"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_static{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{short_version}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Version",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 3,
+          "y": 1
+        },
+        "id": 54,
+        "links": [],
         "maxDataPoints": 100,
         "options": {
           "colorMode": "none",
-          "graphMode": "area",
+          "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_max_connections{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Max Connections",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 6,
+          "y": 1
+        },
+        "id": 56,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
               "lastNotNull"
@@ -267,75 +304,773 @@
             "fields": "",
             "values": false
           },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
+          "text": {},
+          "textMode": "auto"
         },
-        "pluginVersion": "12.2.0",
+        "pluginVersion": "9.0.5",
         "targets": [
           {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_shared_buffers_bytes{app=\"$app\"}",
             "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  ts as time,\n  (sum(heap_blks_read+heap_blks_hit+idx_blks_read+idx_blks_hit)-lag(sum(heap_blks_read+heap_blks_hit+idx_blks_read+idx_blks_hit)) over (order by ts))/600 as value\nFROM pgstatspack_snap s, pgstatspack_tables t\nWHERE ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n   AND s.snapid=t.snapid\nGROUP BY ts\nORDER BY ts ASC",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
           }
         ],
-        "title": "Read Activity",
-        "transparent": true,
+        "title": "Shared Buffers",
         "type": "stat"
       },
       {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "$MyInstance"
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
         },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 10,
+          "y": 1
+        },
+        "id": 58,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_effective_cache_size_bytes{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Effective Cache",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 14,
+          "y": 1
+        },
+        "id": 60,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_maintenance_work_mem_bytes{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Maintenance Work Mem",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 18,
+          "y": 1
+        },
+        "id": 66,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_work_mem_bytes{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Work Mem",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 1,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 21,
+          "y": 1
+        },
+        "id": 32,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_max_wal_size_bytes{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Max WAL Size",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 0,
+          "y": 4
+        },
+        "id": 62,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_random_page_cost{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Random Page Cost",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 3,
+          "y": 4
+        },
+        "id": 70,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_seq_page_cost{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Seq Page Cost",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 6,
+          "y": 4
+        },
+        "id": 64,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_max_worker_processes{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Max Worker Processes",
+        "type": "stat"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 10,
+          "y": 4
+        },
+        "id": 68,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_settings_max_parallel_workers{app=\"$app\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Max Parallel Workers",
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 72,
+        "panels": [],
+        "title": "Database",
+        "type": "row"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
-              "barWidthFactor": 0.6,
               "drawStyle": "line",
-              "fillOpacity": 50,
+              "fillOpacity": 10,
               "gradientMode": "none",
               "hideFrom": {
                 "legend": false,
                 "tooltip": false,
                 "viz": false
               },
-              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "min": 72,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 74,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "last"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "editorMode": "code",
+            "expr": "pg_database_size_bytes{app=\"$app\", datname=\"$db\"}",
+            "legendFormat": "size",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Size",
+        "type": "timeseries"
+      },
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 36,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "prometheus"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Connection / Transaction Statistics",
+        "type": "row"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
               "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
@@ -343,7 +1078,852 @@
                 "type": "linear"
               },
               "showPoints": "never",
-              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 17
+        },
+        "id": 6,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_stat_activity_count{app=\"$app\", datname=\"$db\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{state}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Connections",
+        "type": "timeseries"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 17
+        },
+        "id": 8,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_xact_commit{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "commits",
+            "refId": "A"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_xact_rollback{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "rollbacks",
+            "refId": "B"
+          }
+        ],
+        "title": "Transactions",
+        "type": "timeseries"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "Rows",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 27
+        },
+        "id": 18,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_tup_fetched{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "SELECT (index scan)",
+            "refId": "A"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_tup_returned{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "SELECT (table scan)",
+            "refId": "B"
+          }
+        ],
+        "title": "Read Stats",
+        "type": "timeseries"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "Rows",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 27
+        },
+        "id": 20,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_tup_inserted{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "INSERT",
+            "refId": "A"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_tup_updated{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "UPDATE",
+            "refId": "B"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_tup_deleted{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "DELETE",
+            "refId": "C"
+          }
+        ],
+        "title": "Change Stats",
+        "type": "timeseries"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 35
+        },
+        "id": 42,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_stat_activity_max_tx_duration{app=\"$app\", datname=\"$db\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "max_tx_duration [{{state}}]",
+            "refId": "A"
+          }
+        ],
+        "title": "Longest Transaction",
+        "type": "timeseries"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 4,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 35
+        },
+        "id": 44,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "hidden",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_stat_database_blks_hit{app=\"$app\", datname=\"$db\"} / (pg_stat_database_blks_read{app=\"$app\", datname=\"$db\"} + pg_stat_database_blks_hit{app=\"$app\", datname=\"$db\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "Cache Hit Rate",
+            "refId": "A"
+          }
+        ],
+        "title": "Cache Hit Rate",
+        "type": "timeseries"
+      },
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 43
+        },
+        "id": 50,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "prometheus"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "misc",
+        "type": "row"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 17,
+          "x": 0,
+          "y": 44
+        },
+        "id": 46,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "right"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_bgwriter_buffers_backend_total{app=\"$app\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "buffers_backend",
+            "refId": "A"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_bgwriter_buffers_alloc_total{app=\"$app\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "buffers_alloc",
+            "refId": "B"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync_total{app=\"$app\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "backend_fsync",
+            "refId": "C"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_bgwriter_buffers_checkpoint_total{app=\"$app\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "buffers_checkpoint",
+            "refId": "D"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_bgwriter_buffers_clean_total{app=\"$app\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "buffers_clean",
+            "refId": "E"
+          }
+        ],
+        "title": "Buffers (bgwriter)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 7,
+          "x": 17,
+          "y": 44
+        },
+        "id": 28,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_conflicts{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "conflicts",
+            "refId": "B"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_deadlocks{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "deadlocks",
+            "refId": "A"
+          }
+        ],
+        "title": "Conflicts/Deadlocks",
+        "type": "timeseries"
+      },
+      {
+        "datasource": "${DS_PROMETHEUS}",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
               "spanNulls": false,
               "stacking": {
                 "group": "A",
@@ -355,13 +1935,12 @@
             },
             "decimals": 0,
             "mappings": [],
-            "min": 1,
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
                   "color": "green",
-                  "value": 0
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -371,686 +1950,60 @@
             },
             "unit": "short"
           },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ABORTED_CLIENTS"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#bf1b00",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ABORTED_CLIENTS-d"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#890f02",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ABORTED_CONNECTS"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#f29191",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Aborted_clients-d"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#c15c17",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Aborted_connects-d"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#cca300",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "SLOW_QUERIES"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#e24d42",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "SLOW_QUERIES-d"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#cca300",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Slow_queries"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#99440a",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Slow_queries-d"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#890f02",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "THREADS_CONNECTED"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#3f6833",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "THREADS_RUNNING"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#cca300",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Threads_connected"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#64b0c8",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "SLOW_QUERIES"
-              },
-              "properties": [
-                {
-                  "id": "custom.fillOpacity",
-                  "value": 0
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ABORTED_CLIENTS"
-              },
-              "properties": [
-                {
-                  "id": "custom.fillOpacity",
-                  "value": 0
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ABORTED_CONNECTS"
-              },
-              "properties": [
-                {
-                  "id": "custom.fillOpacity",
-                  "value": 0
-                }
-              ]
-            }
-          ]
+          "overrides": []
         },
         "gridPos": {
-          "h": 6,
-          "w": 10,
+          "h": 7,
+          "w": 17,
           "x": 0,
-          "y": 2
+          "y": 50
         },
-        "id": 2,
+        "id": 30,
+        "links": [],
         "options": {
           "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "right"
           },
           "tooltip": {
-            "hideZeros": false,
-            "maxHeight": 600,
             "mode": "multi",
             "sort": "none"
           }
         },
-        "pluginVersion": "12.2.0",
+        "pluginVersion": "9.0.5",
         "targets": [
           {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "editorMode": "code",
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "pg_locks_count{app=\"$app\", datname=\"$db\"}",
             "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  ts as time,\n  sum(count_star) as value,\n  case when working then 'Active' else '\u003cIDLE\u003e' end as metric\nFROM pgstatspack_snap s, pgstatspack_activity_v a\nWHERE ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n   AND s.snapid=a.snapid\nGROUP BY working, ts\nORDER BY ts ASC, 2 desc",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            },
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{mode}}",
+            "refId": "A"
           }
         ],
-        "title": "Sessions",
+        "title": "Lock Tables",
         "type": "timeseries"
       },
       {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
+        "datasource": "${DS_PROMETHEUS}",
+        "description": "Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineWidth": 3,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "SIZEDB.TOTAL"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "bytes"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "auto"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "size"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "bytes"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "auto"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 10,
-          "x": 10,
-          "y": 2
-        },
-        "id": 4,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "maxHeight": 600,
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "select ts as time,\n       sum(sizek)*1024 as Size \n  from pgstatspack_space_usage\n WHERE ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n group by ts\n order by ts\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": "180d",
-        "title": "Space usage",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [
-              {
-                "options": {
-                  "match": "null",
-                  "result": {
-                    "text": "N/A"
-                  }
-                },
-                "type": "special"
-              }
-            ],
-            "max": 100,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": 0
-                },
-                {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 95
-                },
-                {
-                  "color": "#299c46",
-                  "value": 98
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 20,
-          "y": 2
-        },
-        "id": 41,
-        "maxDataPoints": 100,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto",
-          "text": {}
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT ts as time,\n       sum(t.heap_blks_hit)/sum(t.heap_blks_hit+t.heap_blks_read)*100 as value \n  FROM pgstatspack_tables t, pgstatspack_snap s\n WHERE t.snapid=s.snapid\n   AND ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n group by s.ts\n order by ts",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Heap Cache Hit",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [
-              {
-                "options": {
-                  "match": "null",
-                  "result": {
-                    "text": "N/A"
-                  }
-                },
-                "type": "special"
-              }
-            ],
-            "max": 100,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": 0
-                },
-                {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 95
-                },
-                {
-                  "color": "#299c46",
-                  "value": 98
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 20,
-          "y": 6
-        },
-        "id": 42,
-        "maxDataPoints": 100,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto"
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT ts as time,\n       sum(t.idx_blks_hit)/sum(t.idx_blks_hit+t.idx_blks_read)*100 as value \n  FROM pgstatspack_tables t, pgstatspack_snap s\n WHERE t.snapid=s.snapid\n   AND ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n group by s.ts\n order by s.ts\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "IDX Cache Hit",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
-              "barWidthFactor": 0.6,
               "drawStyle": "line",
               "fillOpacity": 10,
               "gradientMode": "none",
@@ -1059,7 +2012,6 @@
                 "tooltip": false,
                 "viz": false
               },
-              "insertNulls": false,
               "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
@@ -1067,7 +2019,6 @@
                 "type": "linear"
               },
               "showPoints": "never",
-              "showValues": false,
               "spanNulls": false,
               "stacking": {
                 "group": "A",
@@ -1083,7 +2034,7 @@
               "steps": [
                 {
                   "color": "green",
-                  "value": 0
+                  "value": null
                 },
                 {
                   "color": "red",
@@ -1091,1303 +2042,203 @@
                 }
               ]
             },
-            "unit": "short"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Deleted"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#bf1b00",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Inserted"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#508642",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Updated"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#e5ac0e",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "BYTES_SENT-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "BYTES_RECEIVED-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Bytes_received-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Bytes_sent-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 10,
-          "x": 0,
-          "y": 8
-        },
-        "id": 49,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "maxHeight": 600,
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "select $__timeEpoch(ts),\n       'Read' as metric,\n       greatest(val-lag(val) over (order by ts), 0) as value\n  from (SELECT ts, sum(t.seq_tup_read) as val\n          FROM pgstatspack_tables t, pgstatspack_snap s\n         WHERE t.snapid=s.snapid\n         GROUP BY s.ts) sum_read\n where ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\nUNION\nselect $__timeEpoch(ts),\n       'Fetch' as metric,\n       greatest(val-lag(val) over (order by ts), 0) as value\n  from (SELECT ts, sum(t.idx_tup_fetch) as val\n          FROM pgstatspack_tables t, pgstatspack_snap s\n         WHERE t.snapid=s.snapid\n         GROUP BY s.ts) sum_read\n where ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n order by 1 asc, 2 desc\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Tuples OUT",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "hidden",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 50,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Commit"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#9ac48a",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "DELETE"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#bf1b00",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "DELETE_MULTI"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#bf1b00",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "INSERT"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#629e51",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "INSERT_SELECT"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#3f6833",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Rollback"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#bf1b00",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "SELECT"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#5195ce",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "UPDATE"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#cca300",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "UPDATE_MULTI"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#f2c96d",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Commit"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "ops"
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "auto"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Rollback"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "ops"
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "auto"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 10,
-          "x": 10,
-          "y": 8
-        },
-        "id": 6,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "maxHeight": 600,
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "select ts as time,\n       'Commit' as metric,\n       greatest(val-lag(val) over (order by ts), 0) as value\n  from (SELECT ts, sum(d.xact_commit) as val\n          FROM pgstatspack_database d, pgstatspack_snap s\n         WHERE d.snapid=s.snapid\n         GROUP BY s.ts) sum_comm\n where ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\nUNION\nselect ts as time,\n       'Rollback' as metric,\n       greatest(val-lag(val) over (order by ts), 0) as value\n  from (SELECT ts, sum(d.xact_rollback) as val\n          FROM pgstatspack_database d, pgstatspack_snap s\n         WHERE d.snapid=s.snapid\n         GROUP BY s.ts) sum_comm\n where ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n order by 1 asc, 2 desc",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Transactions /sec",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [
-              {
-                "options": {
-                  "match": "null",
-                  "result": {
-                    "text": "N/A"
-                  }
-                },
-                "type": "special"
-              }
-            ],
-            "max": 100,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": 0
-                },
-                {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 95
-                },
-                {
-                  "color": "#299c46",
-                  "value": 98
-                }
-              ]
-            },
-            "unit": "none"
+            "unit": "bytes"
           },
           "overrides": []
         },
         "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 20,
-          "y": 10
-        },
-        "id": 47,
-        "maxDataPoints": 100,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto",
-          "text": {}
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT ts as time,\n       sum(t.toast_blks_hit)/sum(t.toast_blks_hit+t.toast_blks_read)*100 as value \n  FROM pgstatspack_tables t, pgstatspack_snap s\n WHERE t.snapid=s.snapid\n   AND ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n group by s.ts\n having sum(t.toast_blks_hit+t.toast_blks_read)\u003e0\n order by s.ts",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Toast Cache Hit",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "showValues": false,
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": 0
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Deleted"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#bf1b00",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Inserted"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#508642",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Updated"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "#e5ac0e",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "BYTES_SENT-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "BYTES_RECEIVED-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Bytes_received-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Bytes_sent-d"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "Bps"
-                },
-                {
-                  "id": "min",
-                  "value": 0
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 10,
-          "x": 0,
-          "y": 14
-        },
-        "id": 8,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "hideZeros": false,
-            "maxHeight": 600,
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "select ts as time,\n       'Inserted' as metric,\n       greatest(val-lag(val) over (order by ts), 0) as value\n  from (SELECT ts, sum(t.n_tup_ins) as val\n          FROM pgstatspack_tables t, pgstatspack_snap s\n         WHERE t.snapid=s.snapid\n           and ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n         GROUP BY s.ts) sum_read\nUNION\nselect ts as time,\n       'Updated' as metric,\n       greatest(val-lag(val) over (order by ts), 0) as value\n  from (SELECT ts, sum(t.n_tup_upd) as val\n          FROM pgstatspack_tables t, pgstatspack_snap s\n         WHERE t.snapid=s.snapid\n           AND ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n         GROUP BY s.ts) sum_read\nUNION\nselect ts as time,\n       'Deleted' as metric,\n       -greatest(val-lag(val) over (order by ts), 0) as value\n  from (SELECT ts, sum(t.n_tup_del) as val\n          FROM pgstatspack_tables t, pgstatspack_snap s\n         WHERE t.snapid=s.snapid\n           AND ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n         GROUP BY s.ts) sum_read\n order by 1 asc, 2 desc",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Tuples IN",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "scaleDistribution": {
-                "type": "linear"
-              }
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 10,
-          "x": 10,
-          "y": 14
-        },
-        "hideTimeOverride": false,
-        "id": 18,
-        "options": {
-          "calculate": false,
-          "calculation": {},
-          "cellGap": 2,
-          "cellValues": {},
-          "color": {
-            "exponent": 0.5,
-            "fill": "#b4ff00",
-            "mode": "scheme",
-            "reverse": false,
-            "scale": "exponential",
-            "scheme": "RdYlGn",
-            "steps": 128
-          },
-          "exemplars": {
-            "color": "rgba(255,0,255,0.7)"
-          },
-          "filterValues": {
-            "le": 1e-9
-          },
-          "legend": {
-            "show": true
-          },
-          "rowsFrame": {
-            "layout": "le"
-          },
-          "showValue": "never",
-          "tooltip": {
-            "maxHeight": 600,
-            "mode": "single",
-            "showColorScale": false,
-            "yHistogram": false
-          },
-          "yAxis": {
-            "axisPlacement": "left",
-            "reverse": false,
-            "unit": "short"
-          }
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "editorMode": "code",
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  floor(extract(epoch from timest)/86400)*86400 as \"time\",\n  max(to_char(timest,' HH24')) as metric,\n  sum(val) as value\nFROM (SELECT ts as timest, sum(case working when true then 1 else 0 end) as val\n          FROM pgstatspack_snap s, pgstatspack_activity_v a\n         WHERE ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n           AND s.snapid=a.snapid\n         GROUP BY ts ) q\nGROUP BY floor(extract(epoch from timest)/3600)*3600,floor(extract(epoch from timest)/86400)*86400\nORDER BY floor(extract(epoch from timest)/3600)*3600,floor(extract(epoch from timest)/86400)*86400;",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            },
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": "14d",
-        "title": "Heatmap (#Active)",
-        "type": "heatmap"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [
-              {
-                "options": {
-                  "match": "null",
-                  "result": {
-                    "text": "N/A"
-                  }
-                },
-                "type": "special"
-              }
-            ],
-            "max": 100,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": 0
-                },
-                {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 95
-                },
-                {
-                  "color": "#299c46",
-                  "value": 98
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 4,
-          "x": 20,
-          "y": 14
-        },
-        "id": 48,
-        "maxDataPoints": 100,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto"
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT ts as time,\n       sum(t.tidx_blks_hit)/sum(t.tidx_blks_hit+t.tidx_blks_read)*100 as value \n  FROM pgstatspack_tables t, pgstatspack_snap s\n WHERE t.snapid=s.snapid\n   AND ts between to_timestamp($__unixEpochFrom()) and to_timestamp($__unixEpochTo())\n group by s.ts\n having sum(t.tidx_blks_hit+t.tidx_blks_read)\u003e0\n order by s.ts",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Toast IDX Cache Hit",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "uid": "$MyInstance"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [
-              {
-                "options": {
-                  "match": "null",
-                  "result": {
-                    "text": "N/A"
-                  }
-                },
-                "type": "special"
-              }
-            ],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "#d44a3a",
-                  "value": 0
-                },
-                {
-                  "color": "rgba(237, 129, 40, 0.89)",
-                  "value": 0.5
-                },
-                {
-                  "color": "#299c46",
-                  "value": 0.6
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 2,
-          "w": 4,
-          "x": 20,
-          "y": 18
-        },
-        "id": 36,
-        "maxDataPoints": 100,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "horizontal",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "12.2.0",
-        "targets": [
-          {
-            "alias": "",
-            "datasource": {
-              "uid": "$MyInstance"
-            },
-            "format": "time_series",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT now() as time,\n       count(*) as value \n  FROM pg_stat_replication s\n group by now()\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "value"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "timeColumn": "time",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Master - Connected Slaves",
-        "type": "stat"
-      },
-      {
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 1,
-          "w": 10,
-          "x": 0,
-          "y": 20
-        },
-        "id": 44,
-        "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "",
-          "mode": "html"
-        },
-        "pluginVersion": "12.2.0",
-        "title": "$MyVar2",
-        "transparent": true,
-        "type": "text"
-      },
-      {
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 1,
-          "w": 10,
-          "x": 10,
-          "y": 20
+          "h": 7,
+          "w": 7,
+          "x": 17,
+          "y": 50
         },
         "id": 40,
+        "links": [],
         "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
+          "legend": {
+            "calcs": [],
+            "displayMode": "hidden",
+            "placement": "bottom"
           },
-          "content": "",
-          "mode": "html"
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
         },
-        "pluginVersion": "12.2.0",
-        "title": "This dashboard uses pgstatspack (https://www.meo.bogliolo.name/pub/pgstatspack-2.3.4.zip)",
-        "transparent": true,
-        "type": "text"
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_database_temp_bytes{app=\"$app\", datname=\"$db\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "Temp Bytes",
+            "refId": "A"
+          }
+        ],
+        "title": "Temp File",
+        "type": "timeseries"
       },
       {
+        "datasource": "${DS_PROMETHEUS}",
         "fieldConfig": {
-          "defaults": {},
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
           "overrides": []
         },
         "gridPos": {
-          "h": 1,
-          "w": 4,
-          "x": 20,
-          "y": 20
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 57
         },
-        "id": 50,
+        "id": 38,
+        "links": [],
         "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
+          "legend": {
+            "calcs": [
+              "mean",
+              "lastNotNull",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
           },
-          "content": "",
-          "mode": "html"
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
         },
-        "pluginVersion": "12.2.0",
-        "title": "by Meo",
-        "transparent": true,
-        "type": "text"
+        "pluginVersion": "9.0.5",
+        "targets": [
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_bgwriter_checkpoint_write_time_total{app=\"$app\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "write_time - Total amount of time that has been spent in the portion of checkpoint processing where files are written to disk.",
+            "refId": "B"
+          },
+          {
+            "datasource": "${DS_PROMETHEUS}",
+            "exemplar": true,
+            "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time_total{app=\"$app\"}[5m])",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "sync_time - Total amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk.",
+            "refId": "A"
+          }
+        ],
+        "title": "Checkpoint Stats",
+        "type": "timeseries"
       }
     ],
-    "preload": false,
-    "refresh": "",
-    "schemaVersion": 42,
-    "tags": [
-      "MyPg"
-    ],
+    "schemaVersion": 36,
+    "style": "dark",
+    "tags": [],
     "templating": {
       "list": [
         {
-          "current": {
-            "text": "PG local",
-            "value": "000000002"
-          },
-          "hide": 1,
+          "current": {},
+          "datasource": "${DS_PROMETHEUS}",
+          "definition": "label_values(pg_up, app)",
+          "hide": 0,
           "includeAll": false,
-          "name": "MyInstance",
+          "label": "App",
+          "multi": false,
+          "name": "app",
           "options": [],
-          "query": "postgres",
-          "refresh": 1,
-          "regex": "/.*/",
-          "type": "datasource"
-        },
-        {
-          "current": {
-            "text": "::1/128:::1/128",
-            "value": "::1/128:::1/128"
+          "query": {
+            "query": "label_values(pg_up, app)",
+            "refId": "StandardVariableQuery"
           },
-          "datasource": {
-            "type": "postgres",
-            "uid": "$MyInstance"
-          },
-          "definition": "select  inet_server_addr() || ':' || inet_server_addr()",
-          "hide": 2,
-          "includeAll": false,
-          "name": "MyVar",
-          "options": [],
-          "query": "select  inet_server_addr() || ':' || inet_server_addr()",
           "refresh": 1,
           "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
           "type": "query"
         },
         {
-          "current": {
-            "text": "PostgreSQL 15.14 (Homebrew) on aarch64-apple-darwin24.4.0",
-            "value": "PostgreSQL 15.14 (Homebrew) on aarch64-apple-darwin24.4.0"
-          },
-          "datasource": {
-            "type": "postgres",
-            "uid": "$MyInstance"
-          },
-          "definition": "select  substring(version() for  position(',' in version())-1)  from pg_database",
-          "hide": 2,
+          "current": {},
+          "datasource": "${DS_PROMETHEUS}",
+          "definition": "label_values(pg_stat_database_tup_fetched{datname!~\"template.*|postgres\",app=\"$app\"},datname)",
+          "hide": 0,
           "includeAll": false,
-          "name": "MyVar2",
+          "label": "Database",
+          "multi": false,
+          "name": "db",
           "options": [],
-          "query": "select  substring(version() for  position(',' in version())-1)  from pg_database",
-          "refresh": 2,
+          "query": {
+            "query": "label_values(pg_stat_database_tup_fetched{datname!~\"template.*|postgres\",app=\"$app\"},datname)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
           "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
           "type": "query"
         }
       ]
     },
     "time": {
-      "from": "now-7d",
+      "from": "now-24h",
       "to": "now"
     },
     "timepicker": {
       "refresh_intervals": [
+        "5s",
         "10s",
         "30s",
         "1m",
@@ -2397,9 +2248,21 @@
         "1h",
         "2h",
         "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
       ]
     },
-    "timezone": "utc",
-    "title": "4Pg  Simple Dashboard"
+    "timezone": "",
+    "title": "PostgreSQL Statistics",
+    "weekStart": ""
   }
 }
