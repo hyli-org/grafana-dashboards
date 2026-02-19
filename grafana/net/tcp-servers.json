@@ -2071,6 +2071,8 @@
             "uid": "mimir"
           },
           "definition": "label_values({server_name=~\"$server_name\"},pod)",
+          "includeAll": true,
+          "multi": true,
           "name": "pod",
           "options": [],
           "query": {
