@@ -45,7 +45,20 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/hyli-org/grafana-dashboards/blob/main/grafana/net/new-dashboard-2026-02-18-88tg6.json"
+      }
+    ],
     "panels": [
       {
         "datasource": {
@@ -137,7 +150,8 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(cluster, namespace, pod) (rate(container_network_transmit_bytes_total{namespace=\"camelot\"}[$__rate_interval]))\n* on (cluster, namespace, pod) group_left(app) (kube_pod_labels{app=~\"$app\"})",
+            "expr": "sum by(cluster, namespace, pod) (rate(container_network_transmit_bytes_total{namespace=\"camelot\"}[30s]))\n* on (cluster, namespace, pod) group_left(app) (kube_pod_labels{app=~\"$app\"})",
+            "interval": "5s",
             "legendFormat": "{{pod}}",
             "range": true,
             "refId": "A"
@@ -237,6 +251,7 @@
             },
             "editorMode": "code",
             "expr": "sum by(cluster, namespace, pod) (rate(container_network_receive_bytes_total{namespace=\"camelot\"}[$__rate_interval]))\n* on (cluster, namespace, pod) group_left(app) (kube_pod_labels{app=~\"$app\"})",
+            "interval": "5s",
             "legendFormat": "{{pod}}",
             "range": true,
             "refId": "A"
@@ -332,6 +347,7 @@
           {
             "editorMode": "builder",
             "expr": "sum by(pod) (rate(tcp_server_message_emitted_bytes_total{app=~\"$app\"}[$__rate_interval]))",
+            "interval": "5s",
             "legendFormat": "{{app}} {{pod}}",
             "range": true,
             "refId": "A"
@@ -427,6 +443,7 @@
           {
             "editorMode": "builder",
             "expr": "sum by(pod) (rate(tcp_client_message_received_bytes_total{app=~\"$app\"}[$__rate_interval]))",
+            "interval": "5s",
             "legendFormat": "{{app}} {{pod}}",
             "range": true,
             "refId": "A"
@@ -471,8 +488,8 @@
       ]
     },
     "time": {
-      "from": "now-6h",
-      "to": "now"
+      "from": "2026-02-24T16:56:38.104Z",
+      "to": "2026-02-24T16:57:35.050Z"
     },
     "timepicker": {},
     "timezone": "browser",
