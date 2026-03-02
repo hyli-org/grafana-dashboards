@@ -429,6 +429,7 @@
             },
             "editorMode": "code",
             "expr": "sum by(server_name, pod) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\"}[$__rate_interval]))",
+            "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
             "refId": "A"
@@ -531,6 +532,7 @@
             },
             "editorMode": "code",
             "expr": "sum by(server_name, pod) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\"}[$__rate_interval]))",
+            "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
             "refId": "A"
@@ -2041,10 +2043,10 @@
         {
           "current": {
             "text": [
-              "Da"
+              "P2P"
             ],
             "value": [
-              "Da"
+              "P2P"
             ]
           },
           "datasource": {
@@ -2151,7 +2153,7 @@
       ]
     },
     "time": {
-      "from": "now-30m",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {},
