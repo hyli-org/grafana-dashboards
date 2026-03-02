@@ -314,6 +314,7 @@
             },
             "editorMode": "code",
             "expr": "sum by (server_name) (\n  rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n+ rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n)\n",
+            "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
