@@ -1530,6 +1530,7 @@
             },
             "editorMode": "code",
             "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
+            "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
