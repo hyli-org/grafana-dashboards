@@ -238,9 +238,9 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (delta(tcp_server_peers{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "expr": "sum by(server_name, pod) (delta(tcp_server_peers{server_name=~\"$server_name\",pod=~\"$pod\"}[$__rate_interval]))",
             "interval": "10s",
-            "legendFormat": "{{server_name}}",
+            "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
             "refId": "A"
           }
@@ -2393,10 +2393,10 @@
         {
           "current": {
             "text": [
-              "All"
+              "MempoolNetMessage::SyncReply"
             ],
             "value": [
-              "$__all"
+              "MempoolNetMessage::SyncReply"
             ]
           },
           "datasource": {
@@ -2421,7 +2421,7 @@
       ]
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
