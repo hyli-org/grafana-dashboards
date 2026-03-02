@@ -1606,6 +1606,7 @@
             },
             "editorMode": "builder",
             "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
+            "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
