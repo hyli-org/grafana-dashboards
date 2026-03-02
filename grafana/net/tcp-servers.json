@@ -13,7 +13,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "enable": true,
+          "enable": false,
           "expr": "{service_name=\"kubernetes-event-exporter\"}\n| json\n| metadata_namespace=\"camelot\"\n| reason = \"Pulled\"",
           "hide": false,
           "iconColor": "rgba(0, 211, 255, 1)",
@@ -634,7 +634,8 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": " sum by (message_type) (\n    rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\",message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )",
+            "expr": " sum by (message_type) (\n    rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\",message_type=~\"$message_type\"}[$__rate_interval])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n  )",
+            "interval": "10s",
             "legendFormat": "{{message_type}}",
             "range": true,
             "refId": "A"
@@ -2153,7 +2154,7 @@
       ]
     },
     "time": {
-      "from": "now-15m",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
