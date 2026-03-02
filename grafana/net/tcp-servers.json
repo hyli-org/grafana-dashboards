@@ -239,6 +239,7 @@
             },
             "editorMode": "code",
             "expr": "sum by(server_name) (delta(tcp_server_peers{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
             "refId": "A"
