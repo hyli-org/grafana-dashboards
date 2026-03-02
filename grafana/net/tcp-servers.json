@@ -1160,7 +1160,8 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": " sum by (message_type) (\n    rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[5m])\n  )",
+            "expr": " sum by (message_type) (\n    rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n  )",
+            "interval": "10s",
             "legendFormat": "{{message_type}}",
             "range": true,
             "refId": "A"
