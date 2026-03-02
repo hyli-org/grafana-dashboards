@@ -1264,6 +1264,7 @@
             },
             "editorMode": "code",
             "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
+            "interval": "10s",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
             "refId": "A"
