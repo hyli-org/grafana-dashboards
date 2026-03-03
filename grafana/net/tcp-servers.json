@@ -673,7 +673,7 @@
             "refId": "B"
           }
         ],
-        "title": "Utility volume/node",
+        "title": "Lanes bytes",
         "type": "timeseries"
       },
       {
@@ -2413,10 +2413,10 @@
         {
           "current": {
             "text": [
-              "P2P"
+              "Da"
             ],
             "value": [
-              "P2P"
+              "Da"
             ]
           },
           "datasource": {
@@ -2441,10 +2441,10 @@
         {
           "current": {
             "text": [
-              "catchupper"
+              "signed_da_listener"
             ],
             "value": [
-              "catchupper"
+              "signed_da_listener"
             ]
           },
           "datasource": {
@@ -2494,9 +2494,7 @@
         },
         {
           "current": {
-            "text": [
-              "All"
-            ],
+            "text": "All",
             "value": [
               "$__all"
             ]
@@ -2523,8 +2521,8 @@
       ]
     },
     "time": {
-      "from": "2026-03-03T09:35:06.086Z",
-      "to": "2026-03-03T09:39:27.601Z"
+      "from": "now-30m",
+      "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
