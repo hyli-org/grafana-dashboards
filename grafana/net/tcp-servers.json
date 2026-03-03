@@ -577,6 +577,106 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 7,
+          "x": 14,
+          "y": 13
+        },
+        "id": 120,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "mimir"
+            },
+            "editorMode": "builder",
+            "expr": "consensus_lane_bytes",
+            "interval": "10s",
+            "legendFormat": "{{server_name}}.{{pod}}",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "Utility volume/node",
+        "type": "timeseries"
+      },
+      {
         "collapsed": false,
         "gridPos": {
           "h": 1,
@@ -2341,10 +2441,10 @@
         {
           "current": {
             "text": [
-              "signed_da_listener"
+              "catchupper"
             ],
             "value": [
-              "signed_da_listener"
+              "catchupper"
             ]
           },
           "datasource": {
@@ -2395,10 +2495,10 @@
         {
           "current": {
             "text": [
-              "MempoolNetMessage::SyncReply"
+              "All"
             ],
             "value": [
-              "MempoolNetMessage::SyncReply"
+              "$__all"
             ]
           },
           "datasource": {
@@ -2423,8 +2523,8 @@
       ]
     },
     "time": {
-      "from": "now-30m",
-      "to": "now"
+      "from": "2026-03-03T09:35:06.086Z",
+      "to": "2026-03-03T09:39:27.601Z"
     },
     "timepicker": {},
     "timezone": "browser",
