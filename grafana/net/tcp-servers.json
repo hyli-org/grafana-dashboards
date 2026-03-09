@@ -134,7 +134,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name, pod) (tcp_server_peers{server_name=~\"$server_name\"})",
+            "expr": "sum by(server_name, pod) (tcp_server_peers{server_name=~\"$server_name\", namespace=~\"$namespace\"})",
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
@@ -238,7 +238,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name, pod) (delta(tcp_server_peers{server_name=~\"$server_name\",pod=~\"$pod\"}[$__rate_interval]))",
+            "expr": "sum by(server_name, pod) (delta(tcp_server_peers{server_name=~\"$server_name\",pod=~\"$pod\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
@@ -315,7 +315,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by (server_name) (\n  rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n+ rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n)\n",
+            "expr": "sum by (server_name) (\n  rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__rate_interval])\n+ rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__rate_interval])\n)\n",
             "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
@@ -416,8 +416,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "sum(delta(tcp_server_message_emitted_bytes_total{server_name=\"P2P\"}[$__interval]))",
+            "editorMode": "code",
+            "expr": "sum(delta(tcp_server_message_emitted_bytes_total{server_name=\"P2P\", namespace=~\"$namespace\"}[$__interval]))",
             "hide": true,
             "interval": "10s",
             "legendFormat": "all bytes",
@@ -429,8 +429,8 @@
               "type": "prometheus",
               "uid": "mimir"
             },
-            "editorMode": "builder",
-            "expr": "sum(avg by(lane) (delta(consensus_lane_bytes[$__interval])))",
+            "editorMode": "code",
+            "expr": "sum(avg by(lane) (delta(consensus_lane_bytes{namespace=~\"$namespace\"}[$__interval])))",
             "hide": true,
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
@@ -542,7 +542,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum(delta(tcp_server_message_emitted_bytes_total{server_name=\"P2P\"}[$__interval]))",
+            "expr": "sum(delta(tcp_server_message_emitted_bytes_total{server_name=\"P2P\", namespace=~\"$namespace\"}[$__interval]))",
             "hide": true,
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
@@ -555,7 +555,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum(delta(consensus_lane_bytes[$__interval]))",
+            "expr": "sum(delta(consensus_lane_bytes{namespace=~\"$namespace\"}[$__interval]))",
             "hide": true,
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
@@ -666,7 +666,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "consensus_lane_bytes",
+            "expr": "consensus_lane_bytes{namespace=~\"$namespace\"}",
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
@@ -781,7 +781,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name, pod) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\"}[$__rate_interval]))",
+            "expr": "sum by(server_name, pod) (rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
@@ -884,7 +884,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name, pod) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\"}[$__rate_interval]))",
+            "expr": "sum by(server_name, pod) (rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
@@ -987,7 +987,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": " sum by (message_type) (\n    rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\",message_type=~\"$message_type\"}[$__rate_interval])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n  )",
+            "expr": " sum by (message_type) (\n    rate(tcp_server_message_received_bytes_total{server_name=~\"$server_name\",message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__rate_interval])\n  )",
             "interval": "10s",
             "legendFormat": "{{message_type}}",
             "range": true,
@@ -1090,7 +1090,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_total{message_type=~\"$message_type\", client_name=~\"$client_name\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
@@ -1193,7 +1193,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_bytes_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_emitted_bytes_total{message_type=~\"$message_type\", client_name=~\"$client_name\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
@@ -1308,7 +1308,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name, pod) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\"}[$__rate_interval]))",
+            "expr": "sum by(server_name, pod) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
@@ -1411,7 +1411,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name, pod) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\"}[$__rate_interval]))",
+            "expr": "sum by(server_name, pod) (rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\", pod=~\"$pod\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{server_name}}.{{pod}}",
             "range": true,
@@ -1514,7 +1514,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": " sum by (message_type) (\n    rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval])\n  )",
+            "expr": " sum by (message_type) (\n    rate(tcp_server_message_emitted_bytes_total{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  /\n  sum by (message_type) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__rate_interval])\n  )",
             "interval": "10s",
             "legendFormat": "{{message_type}}",
             "range": true,
@@ -1617,7 +1617,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_total{message_type=~\"$message_type\", client_name=~\"$client_name\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
@@ -1720,7 +1720,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_bytes_total{message_type=~\"$message_type\", client_name=~\"$client_name\"}[$__rate_interval]))",
+            "expr": "sum by(client_name, pod) (rate(tcp_client_message_received_bytes_total{message_type=~\"$message_type\", client_name=~\"$client_name\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{client_name}}.{{pod}}",
             "range": true,
@@ -1809,7 +1809,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
+            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_error_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
             "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
@@ -1885,7 +1885,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
+            "expr": "100 *\nsum by (server_name) (\n  rate(tcp_server_message_closed_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n)\n/\nclamp_min(\n  sum by (server_name) (\n    rate(tcp_server_message_received_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_emitted_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_error_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  )\n  +\n  sum by (server_name) (\n    rate(tcp_server_message_closed_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])\n  ),\n  1e-9\n)\n",
             "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
@@ -1961,9 +1961,9 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "100 * sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval])) / clamp_min(sum by(server_name) (rate(tcp_server_message_emitted_total{server_name=~\"$server_name\"}[$__rate_interval])), 1e-9)",
+            "expr": "",
             "interval": "10s",
-            "legendFormat": "{{server_name}}",
+            "legendFormat": "__auto",
             "range": true,
             "refId": "A"
           }
@@ -2064,7 +2064,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "expr": "sum by(server_name) (rate(tcp_server_message_error_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "error {{server_name}}",
             "range": true,
@@ -2076,7 +2076,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "expr": "sum by(server_name) (rate(tcp_server_message_closed_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "closed {{server_name}}",
             "range": true,
@@ -2088,7 +2088,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\"}[$__rate_interval]))",
+            "expr": "sum by(server_name) (rate(tcp_server_message_send_error_total{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "send_error {{server_name}}",
             "range": true,
@@ -2205,7 +2205,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "histogram_quantile(0.5, sum by(le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{server_name=~\"$server_name\"}[$__rate_interval])))",
+            "expr": "histogram_quantile(0.5, sum by(le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])))",
             "interval": "10s",
             "legendFormat": "p50 {{server_name}}",
             "range": true,
@@ -2217,7 +2217,7 @@
               "uid": "mimir"
             },
             "editorMode": "code",
-            "expr": "histogram_quantile(0.95, sum by(le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{server_name=~\"$server_name\"}[$__rate_interval])))",
+            "expr": "histogram_quantile(0.95, sum by(le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{server_name=~\"$server_name\", namespace=~\"$namespace\"}[$__rate_interval])))",
             "interval": "10s",
             "legendFormat": "p95 {{server_name}}",
             "range": true,
@@ -2293,7 +2293,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(server_name) (increase(tcp_server_message_send_time_seconds_sum{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__range])) / (clamp_min(sum by(server_name) (increase(tcp_server_message_send_time_seconds_count{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__range])), 1))",
+            "expr": "sum by(server_name) (increase(tcp_server_message_send_time_seconds_sum{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__range])) / (clamp_min(sum by(server_name) (increase(tcp_server_message_send_time_seconds_count{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__range])), 1))",
             "interval": "10s",
             "legendFormat": "{{server_name}}",
             "range": true,
@@ -2393,7 +2393,7 @@
               "uid": "mimir"
             },
             "editorMode": "builder",
-            "expr": "sum by(le) (rate(tcp_server_message_send_time_seconds_bucket{server_name=~\"$server_name\", message_type=~\"$message_type\"}[$__rate_interval]))",
+            "expr": "sum by(le) (rate(tcp_server_message_send_time_seconds_bucket{server_name=~\"$server_name\", message_type=~\"$message_type\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "interval": "10s",
             "legendFormat": "{{server_name}} le={{le}}",
             "range": true,
@@ -2413,24 +2413,52 @@
         {
           "current": {
             "text": [
-              "Da"
+              "ea"
             ],
             "value": [
-              "Da"
+              "ea"
             ]
           },
           "datasource": {
             "type": "prometheus",
             "uid": "mimir"
           },
-          "definition": "label_values(tcp_server_peers,server_name)",
+          "definition": "label_values(tcp_server_peers,namespace)",
+          "includeAll": true,
+          "multi": true,
+          "name": "namespace",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(tcp_server_peers,namespace)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "P2P"
+            ],
+            "value": [
+              "P2P"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values(tcp_server_peers{namespace=~\"$namespace\"},server_name)",
           "includeAll": true,
           "multi": true,
           "name": "server_name",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values(tcp_server_peers,server_name)",
+            "query": "label_values(tcp_server_peers{namespace=~\"$namespace\"},server_name)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 2,
@@ -2441,24 +2469,24 @@
         {
           "current": {
             "text": [
-              "signed_da_listener"
+              "All"
             ],
             "value": [
-              "signed_da_listener"
+              "$__all"
             ]
           },
           "datasource": {
             "type": "prometheus",
             "uid": "mimir"
           },
-          "definition": "label_values({__name__=\"tcp_client_message_emitted_total\"},client_name)",
+          "definition": "label_values({__name__=\"tcp_client_message_emitted_total\", namespace=~\"$namespace\"},client_name)",
           "includeAll": true,
           "multi": true,
           "name": "client_name",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values({__name__=\"tcp_client_message_emitted_total\"},client_name)",
+            "query": "label_values({__name__=\"tcp_client_message_emitted_total\", namespace=~\"$namespace\"},client_name)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 2,
@@ -2468,7 +2496,9 @@
         },
         {
           "current": {
-            "text": "All",
+            "text": [
+              "All"
+            ],
             "value": [
               "$__all"
             ]
@@ -2477,14 +2507,14 @@
             "type": "prometheus",
             "uid": "mimir"
           },
-          "definition": "label_values({server_name=~\"$server_name\"},pod)",
+          "definition": "label_values({server_name=~\"$server_name\", namespace=~\"$namespace\"},pod)",
           "includeAll": true,
           "multi": true,
           "name": "pod",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values({server_name=~\"$server_name\"},pod)",
+            "query": "label_values({server_name=~\"$server_name\", namespace=~\"$namespace\"},pod)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
@@ -2503,14 +2533,14 @@
             "type": "prometheus",
             "uid": "mimir"
           },
-          "definition": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\", pod=~\"$pod\"},message_type)",
+          "definition": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\", pod=~\"$pod\", namespace=~\"$namespace\"},message_type)",
           "includeAll": true,
           "multi": true,
           "name": "message_type",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\", pod=~\"$pod\"},message_type)",
+            "query": "label_values({__name__=~\"tcp_server_message_(received|emitted)_total\", server_name=~\"$server_name\", pod=~\"$pod\", namespace=~\"$namespace\"},message_type)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
@@ -2521,7 +2551,7 @@
       ]
     },
     "time": {
-      "from": "now-30m",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {},
