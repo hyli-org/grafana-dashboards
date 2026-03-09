@@ -2118,42 +2118,48 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "node_state_current_height{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "node_state_current_height{app=~\"$node\", namespace=~\"$namespace\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
             "refId": "A"
           },
           {
-            "expr": "consensus_current_slot{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "consensus_current_slot{app=~\"$node\", namespace=~\"$namespace\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
             "refId": "B"
           },
           {
-            "expr": "node_state_unsettled_transactions{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
             "refId": "C"
           },
           {
-            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\"}[5m])",
+            "editorMode": "code",
+            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\"}[5m])",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
             "refId": "D"
           },
           {
-            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\"}[5m])",
+            "editorMode": "code",
+            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\", namespace=~\"$namespace\"}[5m])",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
             "refId": "E"
           },
           {
-            "expr": "p2p_server_peers{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
@@ -2314,7 +2320,7 @@
         "targets": [
           {
             "editorMode": "builder",
-            "expr": "consensus_state",
+            "expr": "consensus_state{namespace=~\"$namespace\"}",
             "intervalFactor": 1,
             "legendFormat": "{{pod}}",
             "range": true,
@@ -2325,6 +2331,10 @@
         "type": "state-timeline"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -2430,15 +2440,19 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "p2p_server_peers{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
             "intervalFactor": 1,
             "legendFormat": "P2P {{app}}",
+            "range": true,
             "refId": "A"
           },
           {
-            "expr": "tcp_server_peers{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "tcp_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
             "intervalFactor": 1,
             "legendFormat": "TCP {{server_name}}",
+            "range": true,
             "refId": "B"
           }
         ],
@@ -2446,6 +2460,10 @@
         "type": "state-timeline"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -2548,9 +2566,11 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "sum by (validator_pubkey) (rate(netmessage_delay_milliseconds_count{app=~\"$node\",validator_pubkey=~\"$validator\"}[$__rate_interval]))",
+            "editorMode": "code",
+            "expr": "sum by (validator_pubkey) (rate(netmessage_delay_milliseconds_count{app=~\"$node\",validator_pubkey=~\"$validator\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "{{validator_pubkey}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -2558,6 +2578,10 @@
         "type": "status-history"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -2660,15 +2684,19 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "rate(tcp_server_message_emitted_total{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval])",
+            "editorMode": "code",
+            "expr": "rate(tcp_server_message_emitted_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{server_name}} emitted",
+            "range": true,
             "refId": "A"
           },
           {
-            "expr": "rate(tcp_server_message_received_total{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval])",
+            "editorMode": "code",
+            "expr": "rate(tcp_server_message_received_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{server_name}} received",
+            "range": true,
             "refId": "B"
           }
         ],
