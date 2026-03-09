@@ -1488,6 +1488,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1568,9 +1572,11 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "histogram_quantile(0.95, sum by (le, msg_type, validator_pubkey) (rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",validator_pubkey=~\"$validator\"}[$__rate_interval])))",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.95, sum by (le, msg_type, validator_pubkey) (rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",validator_pubkey=~\"$validator\", namespace=~\"$namespace\"}[$__rate_interval])))",
             "intervalFactor": 1,
             "legendFormat": "p95 {{msg_type}} {{validator_pubkey}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -1578,6 +1584,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1658,15 +1668,19 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "p2p_server_peers{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
             "intervalFactor": 1,
             "legendFormat": "P2P server peers",
+            "range": true,
             "refId": "A"
           },
           {
-            "expr": "tcp_server_peers{app=~\"$node\"}",
+            "editorMode": "code",
+            "expr": "tcp_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
             "intervalFactor": 1,
             "legendFormat": "{{server_name}} TCP peers",
+            "range": true,
             "refId": "B"
           }
         ],
