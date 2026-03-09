@@ -1688,6 +1688,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1768,15 +1772,19 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "sum by (server_name) (rate(tcp_server_message_emitted_bytes_total{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval]))",
+            "editorMode": "code",
+            "expr": "sum by (server_name) (rate(tcp_server_message_emitted_bytes_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "emitted {{server_name}} B/s",
+            "range": true,
             "refId": "A"
           },
           {
-            "expr": "sum by (server_name) (rate(tcp_server_message_received_bytes_total{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval]))",
+            "editorMode": "code",
+            "expr": "sum by (server_name) (rate(tcp_server_message_received_bytes_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "received {{server_name}} B/s",
+            "range": true,
             "refId": "B"
           }
         ],
@@ -1784,6 +1792,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "mimir"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1864,9 +1876,11 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "expr": "histogram_quantile(0.95, sum by (le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{app=~\"$node\",server_name=~\"$server\"}[$__rate_interval])))",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.95, sum by (le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval])))",
             "intervalFactor": 1,
             "legendFormat": "p95 {{server_name}}",
+            "range": true,
             "refId": "A"
           }
         ],
@@ -1936,7 +1950,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\"}[$__rate_interval])",
+            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{pod}}",
             "range": true,
