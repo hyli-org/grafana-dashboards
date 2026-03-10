@@ -1104,7 +1104,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "rate(mempool_new_cut_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(mempool_new_cut_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "New cuts/s ({{nb_validators}} validators) ({{node_name}})",
             "range": true,
@@ -1573,7 +1573,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "histogram_quantile(0.95, (rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",node_name=~\"$node_name\", namespace=~\"$namespace\"}[$__rate_interval])))",
+            "expr": "histogram_quantile(0.95, (rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])))",
             "intervalFactor": 1,
             "legendFormat": "p95 {{msg_type}} {{node_name}}",
             "range": true,
@@ -1669,7 +1669,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "P2P server peers",
             "range": true,
@@ -1677,7 +1677,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "tcp_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "tcp_server_peers{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "{{server_name}} TCP peers",
             "range": true,
@@ -1877,7 +1877,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "histogram_quantile(0.95, sum by (le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval])))",
+            "expr": "histogram_quantile(0.95, sum by (le, server_name) (rate(tcp_server_message_send_time_seconds_bucket{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])))",
             "intervalFactor": 1,
             "legendFormat": "p95 {{server_name}}",
             "range": true,
@@ -2441,17 +2441,17 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
-            "legendFormat": "P2P {{app}}",
+            "legendFormat": "P2P {{node_name}}",
             "range": true,
             "refId": "A"
           },
           {
             "editorMode": "code",
-            "expr": "tcp_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "tcp_server_peers{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
-            "legendFormat": "TCP {{server_name}}",
+            "legendFormat": "TCP {{server_name}}.{{pod}}",
             "range": true,
             "refId": "B"
           }
@@ -2567,7 +2567,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (validator_pubkey) (rate(netmessage_delay_milliseconds_count{app=~\"$node\",validator_pubkey=~\"$validator\", namespace=~\"$namespace\"}[$__rate_interval]))",
+            "expr": "sum by (node_name) (rate(netmessage_delay_milliseconds_count{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "{{validator_pubkey}}",
             "range": true,
@@ -2685,7 +2685,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(tcp_server_message_emitted_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(tcp_server_message_emitted_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{server_name}} emitted",
             "range": true,
@@ -2693,7 +2693,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "rate(tcp_server_message_received_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(tcp_server_message_received_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{server_name}} received",
             "range": true,
@@ -2748,10 +2748,10 @@
         {
           "current": {
             "text": [
-              "ea"
+              "camelot"
             ],
             "value": [
-              "ea"
+              "camelot"
             ]
           },
           "datasource": {
@@ -2775,8 +2775,12 @@
         },
         {
           "current": {
-            "text": "All",
-            "value": "$__all"
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
           },
           "includeAll": true,
           "label": "TCP Server",
@@ -2792,10 +2796,10 @@
         {
           "current": {
             "text": [
-              "All"
+              "hyli-indexer-merlin-0"
             ],
             "value": [
-              "$__all"
+              "hyli-indexer-merlin-0"
             ]
           },
           "datasource": {
