@@ -493,7 +493,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(consensus_commit_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(consensus_commit_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "Commits/s ({{node_name}})",
             "range": true,
@@ -501,7 +501,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "Block/s ({{node_name}})",
             "range": true,
@@ -569,7 +569,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (tx_kind) (rate(mempool_api_tx_total{app=~\"$node\",status=\"included\", namespace=~\"$namespace\"}[$__rate_interval]))",
+            "expr": "sum by (tx_kind) (rate(mempool_api_tx_total{app=~\"$node\",status=\"included\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "{{tx_kind}}",
             "range": true,
@@ -637,7 +637,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (msg) (rate(bus_receive_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval]))",
+            "expr": "sum by (msg) (rate(bus_receive_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "{{msg}}",
             "range": true,
@@ -708,7 +708,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{pod}}",
             "range": true,
@@ -779,7 +779,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{pod}}",
             "range": true,
@@ -888,7 +888,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\", n}",
+            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "Unsettled ({{node_name}})",
             "range": true,
@@ -896,7 +896,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "Settled/s ({{node_name}})",
             "range": true,
@@ -992,7 +992,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(mempool_api_tx_total{app=~\"$node\",status=\"included\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(mempool_api_tx_total{app=~\"$node\",status=\"included\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{tx_kind}} included/s ({{node_name}})",
             "range": true,
@@ -1088,7 +1088,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(mempool_constructed_block_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(mempool_constructed_block_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "Constructed blocks/s ({{node_name}})",
             "range": true,
@@ -1096,7 +1096,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "rate(mempool_created_data_proposals_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(mempool_created_data_proposals_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "Created data proposals/s ({{node_name}})",
             "range": true,
@@ -1200,7 +1200,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (client_id,msg, node_name) (rate(bus_receive_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval]))",
+            "expr": "sum by (client_id,msg, node_name) (rate(bus_receive_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "recv {{client_id}} {{msg}} ({{node_name}})",
             "range": true,
@@ -1208,7 +1208,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "sum by (client_id,msg, node_name) (rate(bus_send_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval]))",
+            "expr": "sum by (client_id,msg, node_name) (rate(bus_send_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "send {{client_id}} {{msg}} ({{node_name}})",
             "range": true,
@@ -1303,8 +1303,8 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "editorMode": "builder",
-            "expr": "histogram_quantile(0.5, sum by(le, client_id, branch, pod) (rate(event_loop_latency_bucket{app=~\"$node\", branch!=\"core_loop\", namespace=~\"$namespace\"}[$__rate_interval])))",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.5, sum by(le, client_id, branch, pod) (rate(event_loop_latency_bucket{app=~\"$node\", branch!=\"core_loop\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])))",
             "format": "time_series",
             "intervalFactor": 1,
             "legendFormat": "{{client_id}}/{{branch}} ({{pod}})",
@@ -1381,7 +1381,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum(rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",validator_pubkey=~\"$validator\", namespace=~\"$namespace\"}[$__rate_interval])) by (le)",
+            "expr": "sum(rate(netmessage_delay_milliseconds_bucket{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])) by (le)",
             "format": "heatmap",
             "intervalFactor": 1,
             "legendFormat": "{{le}}",
@@ -1476,8 +1476,8 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "editorMode": "builder",
-            "expr": "histogram_quantile(0.95, sum by(le, client_id, branch, pod, node_name) (rate(event_loop_latency_bucket{app=~\"$node\", branch!=\"core_loop\", namespace=~\"$namespace\"}[$__rate_interval])))",
+            "editorMode": "code",
+            "expr": "histogram_quantile(0.95, sum by(le, client_id, branch, pod, node_name) (rate(event_loop_latency_bucket{app=~\"$node\", branch!=\"core_loop\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])))",
             "intervalFactor": 1,
             "legendFormat": "p95 {{branch}} {{client_id}} ({{node_name}}",
             "range": true,
@@ -1773,7 +1773,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "sum by (server_name) (rate(tcp_server_message_emitted_bytes_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval]))",
+            "expr": "sum by (server_name) (rate(tcp_server_message_emitted_bytes_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "emitted {{server_name}} B/s",
             "range": true,
@@ -1781,7 +1781,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "sum by (server_name) (rate(tcp_server_message_received_bytes_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\"}[$__rate_interval]))",
+            "expr": "sum by (server_name) (rate(tcp_server_message_received_bytes_total{app=~\"$node\",server_name=~\"$server\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval]))",
             "intervalFactor": 1,
             "legendFormat": "received {{server_name}} B/s",
             "range": true,
