@@ -1950,7 +1950,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\"}[$__rate_interval])",
+            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[$__rate_interval])",
             "intervalFactor": 1,
             "legendFormat": "{{pod}}",
             "range": true,
@@ -2119,7 +2119,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "node_state_current_height{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "node_state_current_height{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
@@ -2127,7 +2127,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "consensus_current_slot{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "consensus_current_slot{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
@@ -2135,7 +2135,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
@@ -2143,7 +2143,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\"}[5m])",
+            "expr": "rate(node_state_processed_blocks_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[5m])",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
@@ -2151,7 +2151,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\", namespace=~\"$namespace\"}[5m])",
+            "expr": "rate(node_state_settled_transactions_total{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}[5m])",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
@@ -2159,7 +2159,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "format": "table",
             "instant": true,
             "intervalFactor": 1,
@@ -2319,8 +2319,8 @@
         "pluginVersion": "12.4.0-21419697389",
         "targets": [
           {
-            "editorMode": "builder",
-            "expr": "consensus_state{namespace=~\"$namespace\"}",
+            "editorMode": "code",
+            "expr": "consensus_state{namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "{{pod}}",
             "range": true,
