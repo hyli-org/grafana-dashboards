@@ -90,7 +90,7 @@
           {
             "editorMode": "code",
             "exemplar": false,
-            "expr": "consensus_current_slot{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "consensus_current_slot{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "instant": true,
             "intervalFactor": 1,
             "legendFormat": "{{ node_name}}",
@@ -153,7 +153,7 @@
           {
             "editorMode": "code",
             "exemplar": false,
-            "expr": "node_state_current_height{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "node_state_current_height{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "instant": true,
             "intervalFactor": 1,
             "legendFormat": "{{node_name}}",
@@ -224,7 +224,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "{{node_name}}",
             "range": true,
@@ -294,7 +294,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "p2p_server_peers{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "{{node_name}}",
             "range": true,
@@ -888,7 +888,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "node_state_unsettled_transactions{app=~\"$node\", namespace=~\"$namespace\", n}",
             "intervalFactor": 1,
             "legendFormat": "Unsettled ({{node_name}})",
             "range": true,
@@ -1573,9 +1573,9 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "histogram_quantile(0.95, sum by (le, msg_type, validator_pubkey) (rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",validator_pubkey=~\"$validator\", namespace=~\"$namespace\"}[$__rate_interval])))",
+            "expr": "histogram_quantile(0.95, (rate(netmessage_delay_milliseconds_bucket{app=~\"$node\",node_name=~\"$node_name\", namespace=~\"$namespace\"}[$__rate_interval])))",
             "intervalFactor": 1,
-            "legendFormat": "p95 {{msg_type}} {{validator_pubkey}}",
+            "legendFormat": "p95 {{msg_type}} {{node_name}}",
             "range": true,
             "refId": "A"
           }
@@ -2775,26 +2775,6 @@
         },
         {
           "current": {
-            "text": [
-              "All"
-            ],
-            "value": [
-              "$__all"
-            ]
-          },
-          "includeAll": true,
-          "label": "Validator",
-          "multi": true,
-          "name": "validator",
-          "options": [],
-          "query": "label_values(netmessage_delay_milliseconds_bucket{app=~\"$node\"}, validator_pubkey)",
-          "refresh": 1,
-          "regex": "",
-          "regexApplyTo": "value",
-          "type": "query"
-        },
-        {
-          "current": {
             "text": "All",
             "value": "$__all"
           },
@@ -2804,6 +2784,34 @@
           "name": "server",
           "options": [],
           "query": "label_values(tcp_server_message_emitted_total{app=~\"$node\"}, server_name)",
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values(bus_receive_total{namespace=~\"$namespace\", app=~\"$node\"},pod)",
+          "includeAll": true,
+          "multi": true,
+          "name": "pod",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(bus_receive_total{namespace=~\"$namespace\", app=~\"$node\"},pod)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
           "refresh": 1,
           "regex": "",
           "regexApplyTo": "value",
