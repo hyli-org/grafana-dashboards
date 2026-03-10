@@ -389,7 +389,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "consensus_current_slot{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "consensus_current_slot{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "Consensus ({{node_name}})",
             "range": true,
@@ -397,7 +397,7 @@
           },
           {
             "editorMode": "code",
-            "expr": "node_state_current_height{app=~\"$node\", namespace=~\"$namespace\"}",
+            "expr": "node_state_current_height{app=~\"$node\", namespace=~\"$namespace\", pod=~\"$pod\"}",
             "intervalFactor": 1,
             "legendFormat": "Node height ({{node_name}})",
             "range": true,
