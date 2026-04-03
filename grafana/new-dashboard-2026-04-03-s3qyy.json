@@ -23,7 +23,20 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/hyli-org/grafana-dashboards/blob/main/grafana/new-dashboard-2026-04-03-s3qyy.json"
+      }
+    ],
     "panels": [
       {
         "fieldConfig": {
@@ -740,6 +753,10 @@
                 "=",
                 "gcs_bucket",
                 "AND",
+                "resource.label.bucket_name",
+                "=",
+                "hyli-dev-gcs-uploader",
+                "AND",
                 "metric.type",
                 "=",
                 "storage.googleapis.com/network/sent_bytes_count"
@@ -897,7 +914,10 @@
     "templating": {
       "list": [
         {
-          "current": {},
+          "current": {
+            "text": "Stackdriver",
+            "value": "stackdriver"
+          },
           "includeAll": false,
           "label": "Datasource",
           "name": "datasource",
@@ -908,7 +928,10 @@
           "type": "datasource"
         },
         {
-          "current": {},
+          "current": {
+            "text": "Hyli Dev",
+            "value": "hyli-backend-dev"
+          },
           "datasource": {
             "uid": "$datasource"
           },
