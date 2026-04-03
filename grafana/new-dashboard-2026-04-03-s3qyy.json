@@ -10,7 +10,6 @@
         {
           "builtIn": 1,
           "datasource": {
-            "type": "grafana",
             "uid": "-- Grafana --"
           },
           "enable": true,
@@ -25,20 +24,963 @@
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
     "links": [],
-    "panels": [],
+    "panels": [
+      {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 7,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "This dashboard has 6 charts for the related [Cloud Storage metrics](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-storage), including `Total object count`, `Total bytes`, `Bucket object count`, `Bucket total bytes`, `Bucket - Received/Sent Bytes`, and `Bucket - Request count`.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "title": "Cloud Storage Monitoring",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 3
+        },
+        "id": 1,
+        "options": {
+          "alertThreshold": true,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 220
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "aliasBy": "",
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "$alignmentPeriod",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket"
+              ],
+              "groupBys": [],
+              "metricKind": "GAUGE",
+              "metricType": "storage.googleapis.com/storage/object_count",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project",
+              "unit": "1",
+              "valueType": "INT64"
+            },
+            "queryType": "timeSeriesList",
+            "refId": "A",
+            "timeSeriesList": {
+              "alignmentPeriod": "$alignmentPeriod",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket",
+                "AND",
+                "resource.label.bucket_name",
+                "=",
+                "hyli-dev-gcs-uploader",
+                "AND",
+                "metric.type",
+                "=",
+                "storage.googleapis.com/storage/object_count"
+              ],
+              "groupBys": [],
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project"
+            }
+          }
+        ],
+        "title": "Total object count",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 3
+        },
+        "id": 2,
+        "options": {
+          "alertThreshold": true,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 220
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "aliasBy": "",
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "$alignmentPeriod",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket"
+              ],
+              "groupBys": [],
+              "metricKind": "GAUGE",
+              "metricType": "storage.googleapis.com/storage/total_bytes",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project",
+              "unit": "By",
+              "valueType": "DOUBLE"
+            },
+            "queryType": "timeSeriesList",
+            "refId": "A",
+            "timeSeriesList": {
+              "alignmentPeriod": "$alignmentPeriod",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket",
+                "AND",
+                "resource.label.bucket_name",
+                "=",
+                "hyli-dev-gcs-uploader",
+                "AND",
+                "metric.type",
+                "=",
+                "storage.googleapis.com/storage/total_bytes"
+              ],
+              "groupBys": [],
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project"
+            }
+          }
+        ],
+        "title": "Total bytes",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 11
+        },
+        "id": 3,
+        "options": {
+          "alertThreshold": true,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 220
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "aliasBy": "",
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket"
+              ],
+              "groupBys": [],
+              "metricKind": "GAUGE",
+              "metricType": "storage.googleapis.com/storage/object_count",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project",
+              "unit": "1",
+              "valueType": "INT64"
+            },
+            "queryType": "timeSeriesList",
+            "refId": "A",
+            "timeSeriesList": {
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket",
+                "AND",
+                "resource.label.bucket_name",
+                "=",
+                "hyli-dev-gcs-uploader",
+                "AND",
+                "metric.type",
+                "=",
+                "storage.googleapis.com/storage/object_count"
+              ],
+              "groupBys": [],
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project"
+            }
+          }
+        ],
+        "title": "Bucket object count",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 11
+        },
+        "id": 4,
+        "options": {
+          "alertThreshold": true,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 220
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "aliasBy": "",
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket"
+              ],
+              "groupBys": [],
+              "metricKind": "GAUGE",
+              "metricType": "storage.googleapis.com/storage/total_bytes",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project",
+              "unit": "By",
+              "valueType": "DOUBLE"
+            },
+            "queryType": "timeSeriesList",
+            "refId": "A",
+            "timeSeriesList": {
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket",
+                "AND",
+                "resource.label.bucket_name",
+                "=",
+                "hyli-dev-gcs-uploader",
+                "AND",
+                "metric.type",
+                "=",
+                "storage.googleapis.com/storage/total_bytes"
+              ],
+              "groupBys": [],
+              "perSeriesAligner": "ALIGN_MEAN",
+              "projectName": "$project"
+            }
+          }
+        ],
+        "title": "Bucket total bytes",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 19
+        },
+        "id": 5,
+        "options": {
+          "alertThreshold": true,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 220
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "aliasBy": "",
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket"
+              ],
+              "groupBys": [],
+              "metricKind": "DELTA",
+              "metricType": "storage.googleapis.com/network/received_bytes_count",
+              "perSeriesAligner": "ALIGN_RATE",
+              "projectName": "$project",
+              "unit": "By",
+              "valueType": "INT64"
+            },
+            "queryType": "timeSeriesList",
+            "refId": "A",
+            "timeSeriesList": {
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket",
+                "AND",
+                "resource.label.bucket_name",
+                "=",
+                "hyli-dev-gcs-uploader",
+                "AND",
+                "metric.type",
+                "=",
+                "storage.googleapis.com/network/received_bytes_count"
+              ],
+              "groupBys": [],
+              "perSeriesAligner": "ALIGN_RATE",
+              "projectName": "$project"
+            }
+          },
+          {
+            "aliasBy": "",
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket"
+              ],
+              "groupBys": [],
+              "metricKind": "DELTA",
+              "metricType": "storage.googleapis.com/network/sent_bytes_count",
+              "perSeriesAligner": "ALIGN_RATE",
+              "projectName": "$project",
+              "unit": "By",
+              "valueType": "INT64"
+            },
+            "queryType": "timeSeriesList",
+            "refId": "B",
+            "timeSeriesList": {
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket",
+                "AND",
+                "metric.type",
+                "=",
+                "storage.googleapis.com/network/sent_bytes_count"
+              ],
+              "groupBys": [],
+              "perSeriesAligner": "ALIGN_RATE",
+              "projectName": "$project"
+            }
+          }
+        ],
+        "title": "Bucket - Received bytes, Sent bytes",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 19
+        },
+        "id": 6,
+        "options": {
+          "alertThreshold": true,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "width": 220
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.0-21419697389",
+        "targets": [
+          {
+            "aliasBy": "",
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket"
+              ],
+              "groupBys": [],
+              "metricKind": "DELTA",
+              "metricType": "storage.googleapis.com/api/request_count",
+              "perSeriesAligner": "ALIGN_RATE",
+              "projectName": "$project",
+              "unit": "1",
+              "valueType": "INT64"
+            },
+            "queryType": "timeSeriesList",
+            "refId": "A",
+            "timeSeriesList": {
+              "alignmentPeriod": "$alignmentPeriod",
+              "filters": [
+                "resource.type",
+                "=",
+                "gcs_bucket",
+                "AND",
+                "resource.label.bucket_name",
+                "=",
+                "hyli-dev-gcs-uploader",
+                "AND",
+                "metric.type",
+                "=",
+                "storage.googleapis.com/api/request_count"
+              ],
+              "groupBys": [],
+              "perSeriesAligner": "ALIGN_RATE",
+              "projectName": "$project"
+            }
+          }
+        ],
+        "title": "Bucket - Request count",
+        "type": "timeseries"
+      }
+    ],
     "preload": false,
+    "refresh": "",
     "schemaVersion": 42,
-    "tags": [],
+    "tags": [
+      "Storage",
+      "Cloud Monitoring",
+      "GCP"
+    ],
     "templating": {
-      "list": []
+      "list": [
+        {
+          "current": {},
+          "includeAll": false,
+          "label": "Datasource",
+          "name": "datasource",
+          "options": [],
+          "query": "stackdriver",
+          "refresh": 1,
+          "regex": "",
+          "type": "datasource"
+        },
+        {
+          "current": {},
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "definition": "Google Cloud Monitoring - Projects",
+          "includeAll": false,
+          "label": "Project",
+          "name": "project",
+          "options": [],
+          "query": {
+            "labelKey": "",
+            "loading": false,
+            "projectName": "$project",
+            "projects": [],
+            "selectedMetricType": "actions.googleapis.com/smarthome_action/num_active_users",
+            "selectedQueryType": "projects",
+            "selectedSLOService": "",
+            "selectedService": "actions.googleapis.com",
+            "sloServices": []
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
+        },
+        {
+          "current": {
+            "text": "grafana auto",
+            "value": "grafana-auto"
+          },
+          "datasource": {
+            "uid": "${datasource}"
+          },
+          "definition": "",
+          "includeAll": false,
+          "label": "Alignment Period",
+          "name": "alignmentPeriod",
+          "options": [],
+          "query": {
+            "labelKey": "",
+            "loading": false,
+            "projectName": "$project",
+            "projects": [
+              {
+                "name": "project-1",
+                "value": "project-1"
+              },
+              {
+                "name": "project-2",
+                "value": "project-2"
+              }
+            ],
+            "refId": "CloudMonitoringVariableQueryEditor-VariableQuery",
+            "selectedMetricType": "actions.googleapis.com/smarthome_action/num_active_users",
+            "selectedQueryType": "alignmentPeriods",
+            "selectedSLOService": "",
+            "selectedService": "actions.googleapis.com",
+            "sloServices": []
+          },
+          "refresh": 1,
+          "regex": "",
+          "regexApplyTo": "value",
+          "type": "query"
+        }
+      ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-24h",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
-    "title": "GCS blocks",
+    "title": "Cloud Storage Monitoring",
     "weekStart": ""
   }
 }
